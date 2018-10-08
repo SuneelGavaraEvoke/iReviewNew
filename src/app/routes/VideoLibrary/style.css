@@ -1,0 +1,45 @@
+
+.putCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.setpadding {
+    padding: 5px;
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.marginTop {
+    margin-top: 10px;
+}
+.txtColor {
+    color: #7F7F8B;
+}
+.searchBarColumn {
+    height: 30px;
+    width: 80%;
+}
+.grayColor {
+    color: #A6A6A6;
+}
+.searchRow {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: gray;
+}
+#sidebarRecordVideo {
+    display: none;
+}
+.recordedVideos:hover #sidebarRecordVideo {
+    display: block;
+}
+#sidevarSentVideo {
+    display: none;
+}
+.SentVideos #sidevarSentVideo {
+    display: block;
+}

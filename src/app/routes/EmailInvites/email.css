@@ -1,0 +1,42 @@
+
+html, body, .full-height {
+    height: 100%;
+    background-color: white;
+}
+.height-90 {
+    height: calc(100% - 300px);
+}
+.bgColorCol1 {
+background-color: red;
+}
+.bgColorCol2 {
+background-color: blue;
+}
+.createNewButton {
+
+    background-color: black;
+    color: white;
+    font-size: 10px;
+    border-radius: 10px;
+    height: 30px;
+    padding: 5px 10px 5px 10px;
+    height: 30px;
+    float: right;
+    margin: 5px 30px 5px 0px;
+
+}
+.rowSearch {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: gray;
+}
+.storyGuides {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.serchBar {
+    width: 80%;
+    height: 30px;
+}

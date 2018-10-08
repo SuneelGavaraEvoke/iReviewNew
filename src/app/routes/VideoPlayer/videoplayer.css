@@ -1,0 +1,28 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+.headerView {
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mainContainer {
+    width: 100%;
+    height: 100%;
+}
+.playerView {
+    height: 60%;
+    padding: 30px;
+}
+.bottomView {
+    height: 30%;
+    padding-left: 30px;
+}
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
