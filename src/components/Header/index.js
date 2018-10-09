@@ -22,6 +22,7 @@ import IntlMessages from 'util/IntlMessages';
 import LanguageSwitcher from 'components/LanguageSwitcher/index';
 import Menu from 'components/TopNav/Menu';
 import UserInfoPopup from 'components/UserInfo/UserInfoPopup';
+import './header.css';
 
 class Header extends React.Component {
 
@@ -92,7 +93,7 @@ class Header extends React.Component {
         return (
             <AppBar
                 className={`app-main-header ${(navigationStyle === HORIZONTAL_NAVIGATION && horizontalNavPosition === BELOW_THE_HEADER) ? 'app-main-header-top' : ''}`}>
-                <Toolbar className="app-toolbar" disableGutters={false}>
+                <Toolbar className="app-toolbar headerBackground" disableGutters={false}>
                     {navigationStyle === HORIZONTAL_NAVIGATION ?
                         <div className="d-block d-md-none pointer mr-3" onClick={this.onToggleCollapsedNav}>
                             <span className="jr-menu-icon">
@@ -105,19 +106,18 @@ class Header extends React.Component {
                             <span className="menu-icon"/>
                         </IconButton>
                     }
-
-                    <Link className="app-logo mr-2 d-none d-sm-block" to="/">
+                    {/* <Link className="app-logo mr-2 d-none d-sm-block" to="/">
                         <img src="http://via.placeholder.com/177x65" alt="Jambo" title="Jambo"/>
-                    </Link>
+                    </Link> */}
 
 
-                    <SearchBox styleName="d-none d-lg-block" placeholder=""
+                    {/* <SearchBox styleName="d-none d-lg-block" placeholder=""
                                onChange={this.updateSearchText.bind(this)}
                                value={this.state.searchText}/>
                     {(navigationStyle === HORIZONTAL_NAVIGATION && horizontalNavPosition === INSIDE_THE_HEADER) &&
                     <Menu/>}
-
-                    <ul className="header-notifications list-inline ml-auto">
+ */}
+                    {/* <ul className="header-notifications list-inline ml-auto">
                         <li className="d-inline-block d-lg-none list-inline-item">
                             <Dropdown
                                 className="quick-menu nav-searchbox"
@@ -235,7 +235,7 @@ class Header extends React.Component {
                                 </DropdownMenu>
                             </Dropdown>
                         </li>}
-                    </ul>
+                    </ul> */}
                 </Toolbar>
             </AppBar>
         );

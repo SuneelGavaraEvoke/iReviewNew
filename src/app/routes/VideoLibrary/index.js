@@ -143,12 +143,20 @@ export default class VideoLibrary extends Component {
         const {isShowSentPopover} = this.state;
         this.setState({isShowSentPopover: !isShowSentPopover})
     }
+    getClips = () => {
+        return (
+            [{"name": "First Clip", "url": "http://techslides.com/demos/sample-videos/small.mp4"},
+            {"name": "Second Clip",  "url": "https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_2mb.mp4"},
+            {"name": "Third Clip",  "url": "http://techslides.com/demos/sample-videos/small.mp4"}]
+        )
+    }
     render() {
 
         const {recordedVideos, sentVideos} = this.state;
         const rowEvents = {
             onClick: (e, row, rowIndex) => {
-                this.props.history.push('./videoPlayerDetail')
+                this.props.history.push({pathname: './videoPlayerDetail',   
+                state: {detail: this.getClips()}})
             }
           };
                   const pagination = paginationFactory({

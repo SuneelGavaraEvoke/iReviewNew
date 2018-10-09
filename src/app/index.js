@@ -33,6 +33,7 @@ import ColorOption from "containers/Customizer/ColorOption";
 import {isIOS, isMobile} from "react-device-detect";
 import asyncComponent from "../util/asyncComponent";
 import TopNav from "components/TopNav";
+import './mainStyles.css';
 
 class App extends React.Component {
 
@@ -52,14 +53,14 @@ class App extends React.Component {
             <div className={`app-container ${drawerStyle}`}>                
                 <Sidebar/>
                 <div className="app-main-container">
-                    {/* <div
-                        className={`app-header ${navigationStyle === HORIZONTAL_NAVIGATION ? 'app-header-horizontal' : ''}`}>
+                    <div
+                        className={`app-header ${navigationStyle === HORIZONTAL_NAVIGATION ? 'app-header-horizontal appHeader' : 'appHeader'}`}>
                         {(navigationStyle === HORIZONTAL_NAVIGATION && horizontalNavPosition === ABOVE_THE_HEADER) &&
                         <TopNav styleName="app-top-header"/>}
                         <Header/>
                         {(navigationStyle === HORIZONTAL_NAVIGATION && horizontalNavPosition === BELOW_THE_HEADER) &&
                         <TopNav/>}
-                    </div> */}
+                    </div>
 
                     <main className="app-main-content-wrapper">
                         <div className="app-main-content">

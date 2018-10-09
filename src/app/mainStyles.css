@@ -1,0 +1,9 @@
+.appHeader {
+display: none;
+}
+@media  (max-width: 1024px) {
+    .appHeader {
+        display: block;
+        background-color: #808080;
+    }
+}
