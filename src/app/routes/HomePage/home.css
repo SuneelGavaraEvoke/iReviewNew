@@ -1,0 +1,41 @@
+.backgroundColor {
+    background-color: #BDBDBD;
+    color: black;
+}
+.padding {
+    padding: 20px;
+    height: 150px;
+}
+ul.ThumbnailView {
+padding-left: 0px;
+width: 100%;
+}
+ul.ThumbnailView li[class*="span"] {
+    display: inline;
+    float: none;
+    padding: 5px;
+}
+ul.ThumbnailView li[class="span"]:first-child {
+    margin-left: 0;
+}
+img.listItem {
+    width: 150px;
+    height: auto;
+    max-height: 100px;
+}
+.autoMargin {
+    margin: auto;
+    font-size: 30px;
+    text-align: left;
+}
+ul.alignText {
+    text-align: left;
+}
+@media only screen and (max-width: 786px) {
+    ul.alignText {
+       text-align: center; 
+    }
+    img.listItem {
+        max-width: 100px;
+    }
+}

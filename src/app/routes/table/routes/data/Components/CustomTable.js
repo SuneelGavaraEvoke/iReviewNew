@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableFooter from '@material-ui/core/TableFooter';
@@ -96,9 +97,9 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, {withTheme: true
 
 let counter = 0;
 
-function createData(name, calories, fat) {
+function createData(name, calories, fat, one, two, three) {
     counter += 1;
-    return {id: counter, name, calories, fat};
+    return {id: counter, name, calories, fat, one, two, three};
 }
 
 const styles = theme => ({
@@ -120,19 +121,19 @@ class CustomTable extends React.Component {
 
         this.state = {
             data: [
-                createData('Cupcake', 305, 3.7),
-                createData('Donut', 452, 25.0),
-                createData('Eclair', 262, 16.0),
-                createData('Frozen yoghurt', 159, 6.0),
-                createData('Gingerbread', 356, 16.0),
-                createData('Honeycomb', 408, 3.2),
-                createData('Ice cream sandwich', 237, 9.0),
-                createData('Jelly Bean', 375, 0.0),
-                createData('KitKat', 518, 26.0),
-                createData('Lollipop', 392, 0.2),
-                createData('Marshmallow', 318, 0),
-                createData('Nougat', 360, 19.0),
-                createData('Oreo', 437, 18.0),
+                createData('Cupcake', 305, 3.7, 'hello', 20, 'how'),
+                createData('Donut', 452, 25.0, 'how', 33, 'you'),
+                createData('Eclair', 262, 16.0, 'how', 33, 'you'),
+                createData('Frozen yoghurt', 159, 6.0, 'how', 33, 'you'),
+                createData('Gingerbread', 356, 16.0, 'hello', 20, 'how'),
+                createData('Honeycomb', 408, 3.2, 'hello', 20, 'how'),
+                createData('Ice cream sandwich', 237, 9.0, 'hello', 20, 'how'),
+                createData('Jelly Bean', 375, 0.0, 'hello', 20, 'how'),
+                createData('KitKat', 518, 26.0, 'hello', 20, 'how'),
+                createData('Lollipop', 392, 0.2, 'hello', 20, 'how'),
+                createData('Marshmallow', 318, 0, 'hello', 20, 'how'),
+                createData('Nougat', 360, 19.0, 'hello', 20, 'how'),
+                createData('Oreo', 437, 18.0, 'hello', 20, 'how'),
             ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
             page: 0,
             rowsPerPage: 5,
@@ -156,12 +157,19 @@ class CustomTable extends React.Component {
             <Paper className={classes.root}>
                 <div className={classes.tableWrapper}>
                     <Table className={classes.table}>
+                        <TableHead>
+                             <TableRow style={{backgroundColor: 'gray'}}>
+                                  <TableCell style={{textAlign: 'center'}}>Name</TableCell>
+                                  <TableCell style={{textAlign: 'center'}}>Calories</TableCell>
+                                  <TableCell style={{textAlign: 'center'}}>Fat</TableCell>
+                             </TableRow>
+                        </TableHead>
                         <TableBody>
                             {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
                                 return (
                                     <TableRow key={n.id}>
                                         <TableCell>{n.name}</TableCell>
-                                        <TableCell numeric>{n.calories}</TableCell>
+                                        <TableCell style={{textAlign: 'center'}} numeric>{n.calories}</TableCell>
                                         <TableCell numeric>{n.fat}</TableCell>
                                     </TableRow>
                                 );
