@@ -1,0 +1,23 @@
+
+.leftCard {
+    float: right;
+    width: 80%;
+}
+.rightCard {
+    float: left;
+    width: 80%;
+}
+.centerCard {
+    width: 80%;
+    margin: auto
+}
+@media only screen and (max-width: 786px) {
+    .leftCard {
+        margin: auto;
+        float: none;
+    }
+    .rightCard {
+        margin: auto;
+        float: none;
+    }
+}

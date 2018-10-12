@@ -35,8 +35,8 @@ export default class Brands extends Component {
         return (
             <body class="full-height">
                 <div class="row">
-                   <div class="col-sm-12">
-                      <p style={{fontSize: 40, textAlign: 'center'}}>Branding</p>
+                   <div class="col-sm-12 mt-4">
+                      <p style={{fontSize: 40, textAlign: 'left', marginLeft: 30}}>Branding</p>
                    </div>
                    <div class="col-sm-12">
                      <p style={{marginLeft: 50}}>Update your brand informations</p>

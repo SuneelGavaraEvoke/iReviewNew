@@ -2,9 +2,29 @@
     background-color: #BDBDBD;
     color: black;
 }
+.height50 {
+    height: 50px;
+}
 .padding {
     padding: 20px;
     height: 150px;
+}
+.leftCard {
+    float: right;
+    width: 80%;
+}
+.rightCard {
+    float: left;
+    width: 80%;
+}
+
+.centerCard {
+    width: 80%;
+    margin: auto
+}
+.dashBoardBox {
+    display: flex;
+    align-items: center;
 }
 ul.ThumbnailView {
 padding-left: 0px;
@@ -37,5 +57,13 @@ ul.alignText {
     }
     img.listItem {
         max-width: 100px;
+    }
+    .leftCard {
+        margin: auto;
+        float: none;
+    }
+    .rightCard {
+        margin: auto;
+        float: none;
     }
 }

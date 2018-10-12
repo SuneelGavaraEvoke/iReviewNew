@@ -1,9 +1,10 @@
 import React from 'react';
+import './infocard.css';
 
 
-const InfoCard = ({data, styleName, onPress}) => {
+const InfoCard = ({data, styleName, onPress, className}) => {
     return (
-        <div className={`jr-card net-chart ${styleName}`} onClick={() => {onPress()}}>
+        <div className={`jr-card net-chart ${styleName} ${className}`} onClick={() => {onPress()}}>
             <div className="jr-card-thumb">
                 <img className="img-fluid bg-white" src={data.img}/>
             </div>

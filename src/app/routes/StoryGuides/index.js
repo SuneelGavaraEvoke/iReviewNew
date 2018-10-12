@@ -84,7 +84,7 @@ export default class StoryGuides extends Component {
         return (
             <body class="container">
                <div class="container">
-               <div className="row">
+               <div className="row mt-3">
                   <div className="col-md-6"/>
                   <div className="col-sm-12 col-md-6 col-lg-6">
                      <button className="createNewButton" onClick={() => {}}>Create New StoryGuide</button>

@@ -56,7 +56,8 @@ export default class HomePage extends Component {
              arrayList.push(
              <li className="list-inline-item my-2">
                    <img className="listItem" src={thumbNail.link}/>
-            </li>)
+            </li>
+         )
          })
         return arrayList;
     }
@@ -64,24 +65,24 @@ export default class HomePage extends Component {
 
         return (
             <div class="container">
-              <div className="row mt-4">
-                <div className="col-xs-12 col-sm-12">
-                   <h1 className="col-sm-12 col-xs-12 autoMargin">Your DashBoard</h1>
+              <div className="row mt-5 mx-2 height50">
+                <div className="col-xs-12 col-sm-12 backgroundColor dashBoardBox">
+                   <h1 className="col-sm-12 col-xs-12 autoMargin">DashBoard</h1>
                 </div>
               </div>
                <div className="row">
                   <div className="col-sm-4 padding">
-                      <InfoCard  onPress={() => {
+                      <InfoCard className="leftCard" onPress={() => {
                           this.props.history.push('./story-guides');
                       }} data={storyGuides} styleName="backgroundColor"/>
                   </div>
                   <div className="col-sm-4 padding">
-                      <InfoCard onPress={() => {
+                      <InfoCard className="centerCard" onPress={() => {
                           this.props.history.push('./EmailInvites');
                       }} data={emailInvites} styleName="backgroundColor"/>
                   </div>
                   <div className="col-sm-4 padding">
-                      <InfoCard onPress={() => {
+                      <InfoCard className="rightCard" onPress={() => {
                           window.alert('Repsonses Yet To Be Received');
                       }} data={responses} styleName="backgroundColor"/>
                   </div>

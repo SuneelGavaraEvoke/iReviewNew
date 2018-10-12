@@ -109,7 +109,7 @@ export default class EmailInvites extends Component {
         return (
             <body class="container">
                <div class="container">
-               <div className="row rowSearch">
+               <div className="row rowSearch mt-5">
                   <div className="col col-md-6">
                    <h3 class="storyGuides">Email Invites</h3>
                   </div>
