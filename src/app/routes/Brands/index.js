@@ -34,16 +34,17 @@ export default class Brands extends Component {
         const {imagePath} = this.state;
         return (
             <body class="full-height">
+                <div className="container">
                 <div class="row">
-                   <div class="col-sm-12 mt-4">
-                      <p style={{fontSize: 40, textAlign: 'left', marginLeft: 30}}>Branding</p>
+                   <div class="col-sm-12 mt-4 bgGray">
+                      <h1 style={{textAlign: 'left', marginLeft: 20, marginTop: 10}}>Branding</h1>
                    </div>
                    <div class="col-sm-12">
-                     <p style={{marginLeft: 50}}>Update your brand informations</p>
+                     <p style={{marginLeft: 20, marginTop: 10}}>Update your brand informations</p>
                    </div>
-                   <div class="col-sm-12">
-                     <p style={{fontSize: 20, marginLeft: 50}}>Branding</p>
-                   </div>
+                   {/* <div class="col-sm-12">
+                     <p style={{fontSize: 20, marginLeft: 20}}>Branding</p>
+                   </div> */}
                 </div>
                  <div class="container-fluid">
                     <div class="row row-first">
@@ -96,6 +97,7 @@ export default class Brands extends Component {
                         </div>
                     </div>
                  </div>
+             </div>
             </body>
         )
     }

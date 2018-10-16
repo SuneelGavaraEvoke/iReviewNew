@@ -9,6 +9,10 @@ html, body, .full-height {
 .columnHeight {
     height: 50px;
 }
+.bgGray {
+    background-color: #BDBDBD;
+    height: 50px;
+}
 .height-90 {
     height: calc(100% - 150px);
 }
@@ -22,8 +26,8 @@ html, body, .full-height {
     width: 100%;
 }
 .row-first {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
   }  
 .topColumnHeight {
     height: 200px;

@@ -12,6 +12,12 @@ background-color: red;
 .bgColorCol2 {
 background-color: blue;
 }
+.font25 {
+    font-size: 25
+}
+.modal-title {
+    text-align: center;
+}
 .createNewButton {
 
     background-color: black;
@@ -26,11 +32,10 @@ background-color: blue;
 
 }
 .rowSearch {
-    margin-top: 10px;
     margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: gray;
+    background-color: #BDBDBD;
 }
 .storyGuides {
     margin-top: 5px;
@@ -39,4 +44,10 @@ background-color: blue;
 .serchBar {
     width: 80%;
     height: 30px;
+}
+
+@media screen and (min-width: 768px) {
+    .modal-dialog {
+        max-width: 600px;
+      }
 }

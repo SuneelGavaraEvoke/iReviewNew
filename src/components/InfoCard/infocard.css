@@ -7,6 +7,9 @@
     float: left;
     width: 80%;
 }
+.fontTitle {
+    font-size: 25px;
+}
 .centerCard {
     width: 80%;
     margin: auto

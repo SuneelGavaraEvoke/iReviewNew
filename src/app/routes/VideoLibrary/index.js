@@ -159,10 +159,11 @@ export default class VideoLibrary extends Component {
                 state: {detail: this.getClips()}})
             }
           };
-                  const pagination = paginationFactory({
+
+          const pagination = paginationFactory({
             page: 1,
             sizePerPage: 5,
-            sizePerPageList: [
+            sizePerPageList: [,
                 {
                     text: "5",
                     value: 5
@@ -175,7 +176,8 @@ export default class VideoLibrary extends Component {
                     text: 'All',
                     value: products.length
                 }
-            ]
+            ],
+
         })
         return (
             <div class="app-wrapper">
@@ -206,7 +208,6 @@ export default class VideoLibrary extends Component {
                        value={this.state.searchValue}/>
                        </div>
                    </div>
-                   <div class="mt-4">
                    <BootstrapTable  bootstrap4   
                    bordered={ false } 
                    keyField="videoThumbnail"  
@@ -215,43 +216,7 @@ export default class VideoLibrary extends Component {
                    pagination={pagination}
                    rowEvents={ rowEvents }
                    />
-                   </div>
           </div>
         )
     }
 }
-/*     
-
-  let headers = this.state.headers.map(rowData => {
-            return (
-                <th className="grayColor">{rowData}</th>
-            )
-        });
-        let rows = this.state.data.map(rowData => {
-            const {videoUrl, userName, status, recorderDate, invited, actions} = rowData;
-            return (
-                <tr className="txtColor">
-                    <td>
-                        <img src={videoUrl} width="100" height="72"/>
-                    </td>
-                    <td>{userName}</td>
-                    <td>{status}</td>
-                    <td>{recorderDate}</td>
-                    <td>{invited}</td>
-                    <td>
-                        <button style={{backgroundColor: '#498F09', color: 'white'}} onClick={() =>{alert(`Hello ${userName}`)}}>{actions}</button>
-                    </td>
-                </tr>
-            )
-        });
-
-
-<div className="table-responsive">
-               <table className="table">
-               <thead>
-                    <tr>{headers}</tr>
-               </thead>
-               <tbody>{rows}</tbody>
-               </table>
-               </div>
-*/

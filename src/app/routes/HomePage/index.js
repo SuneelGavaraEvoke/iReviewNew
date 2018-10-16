@@ -65,9 +65,9 @@ export default class HomePage extends Component {
 
         return (
             <div class="container">
-              <div className="row mt-5 mx-2 height50">
+              <div className="row mt-4  mx-2 height50">
                 <div className="col-xs-12 col-sm-12 backgroundColor dashBoardBox">
-                   <h1 className="col-sm-12 col-xs-12 autoMargin">DashBoard</h1>
+                   <h1 className="col-sm-12 col-xs-12 autoMargin">Dashboard</h1>
                 </div>
               </div>
                <div className="row">
