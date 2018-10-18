@@ -82,31 +82,35 @@ class SidenavContent extends Component {
 
                     <li className="nav-header"><IntlMessages id="sidebar.main"/></li>
                     <li className="menu no-arrow">
-                        {/* <NavLink to="/app/sample-page">
-                            <i className="zmdi zmdi-view-dashboard zmdi-hc-fw"/>
-                            <span className="nav-text"><IntlMessages id="pages.samplePage"/> </span>
-                        </NavLink> */}
                         <NavLink to="/app/home-page">
                             <i className="zmdi zmdi-view-dashboard zmdi-hc-fw"/>
                             <span className="nav-text"><IntlMessages id="pages.HomePage"/></span>
                         </NavLink>
+                    </li>
+                        <li className="menu no-arrow">
                         <NavLink to="/app/video-library">
                             <i className="zmdi zmdi-view-dashboard zmdi-hc-fw"/>
                             <span className="nav-text"><IntlMessages id="pages.VideoLibrary"/></span>
                         </NavLink>
+                        </li>
+                        <li className="menu no-arrow">
                         <NavLink to="/app/brands">
                             <i className="zmdi zmdi-view-dashboard zmdi-hc-fw"/>
                             <span className="nav-text"><IntlMessages id="pages.Brands"/></span>
                         </NavLink>
+                        </li>
+                        <li className="menu no-arrow">
                         <NavLink to="/app/EmailInvites">
                            <i className="zmdi zmdi-view-dashboard zmdi-hc-fw"/>
                            <span className="nav-text"><IntlMessages id="pages.EmailInvites"/></span>
                         </NavLink>
+                        </li>
+                        <li className="menu no-arrow">
                         <NavLink to="/app/story-guides">
                            <i className="zmdi zmdi-view-dashboard zmdi-hc-fw"/>
                            <span className="nav-text"><IntlMessages id="pages.StoryGuides"></IntlMessages></span>
                         </NavLink>
-                    </li>
+                        </li>
                 </ul>
             </CustomScrollbars>
         );

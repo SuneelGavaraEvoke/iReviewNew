@@ -1,0 +1,14 @@
+.serchBar {
+    width: 80%;
+    height: 30px;
+}
+.storyGuides {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.react-bootstrap-table-pagination {
+    text-align: center;
+}
+.react-bootstrap-table-pagination-list {
+    display: inline-block;
+}

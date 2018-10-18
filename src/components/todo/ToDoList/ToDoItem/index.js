@@ -1,12 +1,6 @@
 import React from 'react';
-import Checkbox from '@material-ui/core/Checkbox';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton'
 import {SortableElement, SortableHandle} from 'react-sortable-hoc';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-
-import labels from 'app/routes/todo/data/labels'
 import users from 'app/routes/todo/data/users'
 // This can be any component you want
 const DragHandle = SortableHandle(() =>

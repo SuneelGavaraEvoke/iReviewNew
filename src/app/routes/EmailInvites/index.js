@@ -95,6 +95,7 @@ export default class EmailInvites extends Component {
         super(props);
     }
     render() {
+
         const pagination = paginationFactory({
             page: 1,
             sizePerPage: 5,
@@ -119,7 +120,11 @@ export default class EmailInvites extends Component {
                     className="serchBar"/>
                   </div>
                </div>
-               <BootstrapTable bootstrap4 keyField="storyname"   bordered={ false }  data={ products } columns={ columns } pagination={pagination} />
+               <BootstrapTable bootstrap4 keyField="storyname"  
+                bordered={ false }  
+                data={ products } 
+                columns={ columns } 
+                pagination={pagination} />
                </div>
             </body>
         )

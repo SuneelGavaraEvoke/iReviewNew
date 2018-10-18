@@ -110,58 +110,13 @@ export default class StoryGuides extends Component {
                   <div className="col-sm-12 col-md-6 col-lg-6">
                      <Button 
                      onClick={() => {
-                        const {isShowPopUp} = this.state;
-                        this.setState({isShowPopUp: !isShowPopUp})
+                         this.props.history.push({pathname: './create-new-story'})
                      }}
                      style={{float: 'right', height: 30, 
                      borderRadius: 10, backgroundColor: '#BDBDBD', marginRight: 20, fontSize: 15, color: 'black'}}>{`Create New StoryGuide`}
                      </Button>
                   </div>
                </div>
-               <Modal isOpen={this.state.isShowPopUp} toggle={this.togglePopup}>
-                    <ModalHeader>Create New StoryGuide</ModalHeader>
-                    <ModalBody> 
-                         <TextField
-                         fullWidth
-                         value={this.state.name}
-                         onChange={(event) => {this.setState({name: event.target.value})}}
-                         label="Name"
-                         margin="normal"
-                         />
-                         <TextField
-                         multiline
-                         rowsMax="4"
-                         fullWidth
-                         value={this.state.description}
-                         onChange={(event) => {this.setState({description: event.target.value})}}
-                         label="Description"
-                         margin="normal"
-                         />
-                         <ToDoList
-                         style={{height: this.state.toDos.length * 75}}
-                         textChanged={(text, index) => {
-                             let arrayValue = this.state.toDos;
-                             arrayValue[index] = text;
-                             this.setState({toDos: arrayValue})
-                         }}
-                         onSortEnd={this.onSortEnd}
-                         useDragHandle={true}
-                         toDos={this.state.toDos}/>
-                         <Button 
-                         onClick={() => {
-                             if (this.state.toDos.length < 3) {
-                                 let {toDos} = this.state;
-                                 toDos.push("");
-                                 this.setState({toDos: toDos})
-                             }
-                         }}
-                         disabled={this.state.toDos.length == 3}
-                         style={{float: 'right'}}>AddMore</Button>
-                         <Button
-                         style={{marginTop: 10, marginLeft: 20, marginRight: 20,backgroundColor: 'gray', width: 'calc(100% - 40px)'}}
-                         onClick={this.validateAndPerformApiCall}>SUBMIT</Button>
-                    </ModalBody>
-               </Modal>
                <div className="row rowSearch mt-4">
                   <div className="col col-md-6">
                    <h1 class="storyGuides">Story Guides</h1>
@@ -210,3 +165,9 @@ export default class StoryGuides extends Component {
         this.setState({isShowPopUp: !isShowPopUp, name: "", description: "", toDos: [""]})
     }
 }
+
+
+
+
+
+

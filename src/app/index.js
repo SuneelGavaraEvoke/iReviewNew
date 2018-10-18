@@ -67,9 +67,13 @@ class App extends React.Component {
                         <div className="app-main-content">
                             <Switch>
                                 <Route path={`${match.url}/video-library`} 
-                                component={asyncComponent(() => import('./routes/VideoLibrary'))}/>      
+                                component={asyncComponent(() => import('./routes/VideoListings'))}/>      
                                 <Route path={`${match.url}/home-page`}
                                 component={asyncComponent(() => import('./routes/HomePage'))}/>
+                                <Route path={`${match.url}/video-details`}
+                                component={asyncComponent(() => import('./routes/VideoLibrary'))}/>
+                                <Route path={`${match.url}/create-new-story`}
+                                component={asyncComponent(() => import('./routes/CreateNewStoryGuide'))}/>
                                 <Route path={`${match.url}/brands`}
                                 component={asyncComponent(() => import('./routes/Brands'))}
                                 />
