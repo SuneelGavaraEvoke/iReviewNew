@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import InfoCard from '../../../components/InfoCard';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import './home.css';
 
 const storyGuides = {
@@ -64,33 +66,37 @@ export default class HomePage extends Component {
     render() {
 
         return (
-            <div class="container">
-              <div className="row mt-4  mx-2 height50">
-                <div className="col-xs-12 col-sm-12 backgroundColor dashBoardBox">
-                   <h1 className="col-sm-12 col-xs-12 autoMargin">Dashboard</h1>
-                </div>
+            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
+              <div className="rootHeader">
+              <AppBar className="app-main-header" position="static">
+                <Toolbar>
+                    <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>DashBoard</h4>
+                    {/* <SearchBox styleName="d-none d-sm-block"/> */}
+                    {/* <Button size="small" className="ml-3 text-white d-none d-sm-block">Login</Button> */}
+                </Toolbar>
+            </AppBar>
               </div>
                <div className="row">
                   <div className="col-sm-4 padding">
-                      <InfoCard className="leftCard" onPress={() => {
+                      <InfoCard className="leftCard bg-secondary" onPress={() => {
                           this.props.history.push('./story-guides');
-                      }} data={storyGuides} styleName="backgroundColor"/>
+                      }} data={storyGuides}/>
                   </div>
                   <div className="col-sm-4 padding">
-                      <InfoCard className="centerCard" onPress={() => {
+                      <InfoCard className="centerCard bg-cyan darken-2" onPress={() => {
                           this.props.history.push('./EmailInvites');
-                      }} data={emailInvites} styleName="backgroundColor"/>
+                      }} data={emailInvites}/>
                   </div>
                   <div className="col-sm-4 padding">
-                      <InfoCard className="rightCard" onPress={() => {
+                      <InfoCard className="rightCard bg-primary" onPress={() => {
                           window.alert('Repsonses Yet To Be Received');
-                      }} data={responses} styleName="backgroundColor"/>
+                      }} data={responses}/>
                   </div>
                </div>
                <div class="row mx-2">
-                <div className="col-xs-12 col-sm-12 backgroundColor">
-                   <h1 className="w-100 px-1 my-2">Videos</h1>
-                </div>
+               <div className="page-heading d-sm-flex justify-content-sm-between align-items-sm-center" style={{width: '100%', marginBottom: 10}}>
+                  <h2 className="title mb-3 mb-sm-0">Videos</h2>
+                  </div>
                 <div className="col-xs-12 col-sm-12 d-inline">
                      <ul className="list-inline mx-1 my-4 alignText">{this.getThumbnailList()}
                      </ul>

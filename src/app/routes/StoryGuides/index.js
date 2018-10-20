@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
-import  SearchBar from '@opuscapita/react-searchbar';
 import BootstrapTable, {SizePerPageDropDown} from 'react-bootstrap-table-next';
-import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import './stories.css';
-import {Modal, ModalHeader, ModalBody} from 'reactstrap';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import ToDoList from '../../../components/todo/ToDoList';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import SearchBox from '../../../components/SearchBox';
 import {arrayMove} from 'react-sortable-hoc';
 
 function duplicateButton(cell, row) {
@@ -103,30 +101,17 @@ export default class StoryGuides extends Component {
         });       
 
         return (
-            <body class="container">
-               <div class="container">
-               <div className="row mt-3">
-                  <div className="col-md-6"/>
-                  <div className="col-sm-12 col-md-6 col-lg-6">
-                     <Button 
-                     onClick={() => {
-                         this.props.history.push({pathname: './create-new-story'})
-                     }}
-                     style={{float: 'right', height: 30, 
-                     borderRadius: 10, backgroundColor: '#BDBDBD', marginRight: 20, fontSize: 15, color: 'black'}}>{`Create New StoryGuide`}
-                     </Button>
-                  </div>
-               </div>
-               <div className="row rowSearch mt-4">
-                  <div className="col col-md-6">
-                   <h1 class="storyGuides">Story Guides</h1>
-                  </div>
-                  <div className="col col-md-6">
-                    <SearchBar
-                    onSearch={(text) => {}}
-                    className="serchBar"/>
-                  </div>
-               </div>
+            //                         this.props.history.push({pathname: './create-new-story'})
+            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
+            <div style={{width: '100%'}}>
+               <AppBar className="app-main-header" position="static">
+                   <Toolbar>
+                        <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>StoryGuides</h4>
+                        <SearchBox styleName="d-none d-sm-block"/>
+                  </Toolbar>
+               </AppBar>
+            </div>
+               <div className="row  mt-4 mx-2">
                <BootstrapTable bootstrap4 
                keyField="storyname"   
                bordered={ false }  
@@ -134,7 +119,7 @@ export default class StoryGuides extends Component {
                columns={ columns } 
                pagination={pagination}/>
                </div>
-            </body>
+           </div>
         )
     }
     validationObject = () => {

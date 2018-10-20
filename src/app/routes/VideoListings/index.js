@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
-import  SearchBar from '@opuscapita/react-searchbar';
 import Card from '@material-ui/core/Card';
-
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import SearchBox from '../../../components/SearchBox';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import BootstrapTable, {SizePerPageDropDown} from 'react-bootstrap-table-next';
 import './VideoListings.css';
@@ -93,17 +94,15 @@ export default class VideoListings extends Component {
         });          
 
         return (
-            <div className="container">
-            <div className="row rowSearch mt-4" style={{backgroundColor: '#BDBDBD', height: 50, alignItems: 'center'}}>
-                  <div className="col col-md-6">
-                   <h1 class="storyGuides">Videos</h1>
-                  </div>
-                  <div className="col col-md-6">
-                    <SearchBar
-                    onSearch={(text) => {}}
-                    className="serchBar"/>
-                  </div>
-               </div>
+            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
+            <div style={{width: '100%'}}>
+             <AppBar className="app-main-header" position="static">
+              <Toolbar>
+                  <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Videos</h4>
+                  <SearchBox styleName="d-none d-sm-block"/>
+              </Toolbar>
+             </AppBar>
+            </div>
             <div className="row mt-4">
               <div className="col-xs-12 col-sm-12 col-md-12">
               <Card style={{overflow: 'visible'}}>

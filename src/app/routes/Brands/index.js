@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Card, CardBody, CardImg, CardSubtitle, CardText} from 'reactstrap';
-import Button from '@material-ui/core/Button';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import '../Brands/brands.css';
 import { SketchPicker } from 'react-color'
 const Delete  = require('../../../../src/Images/delete.png');
@@ -33,20 +33,15 @@ export default class Brands extends Component {
     render() {
         const {imagePath} = this.state;
         return (
-            <body class="full-height">
-                <div className="container">
-                <div class="row">
-                   <div class="col-sm-12 mt-4 bgGray">
-                      <h1 style={{textAlign: 'left', marginLeft: 20, marginTop: 10}}>Branding</h1>
-                   </div>
-                   <div class="col-sm-12">
-                     <p style={{marginLeft: 20, marginTop: 10}}>Update your brand informations</p>
-                   </div>
-                   {/* <div class="col-sm-12">
-                     <p style={{fontSize: 20, marginLeft: 20}}>Branding</p>
-                   </div> */}
-                </div>
-                 <div class="container-fluid">
+            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
+            <div style={{width: '100%'}}>
+             <AppBar className="app-main-header" position="static">
+              <Toolbar>
+                  <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Brands</h4>
+              </Toolbar>
+             </AppBar>
+            </div>
+                 <div class="container-fluid mt-4">
                     <div class="row row-first">
                        <div class="col col-sm-4 topColumnHeight topColumnFlex">
                             <div class="leftDiv">
@@ -98,7 +93,6 @@ export default class Brands extends Component {
                     </div>
                  </div>
              </div>
-            </body>
         )
     }
 }

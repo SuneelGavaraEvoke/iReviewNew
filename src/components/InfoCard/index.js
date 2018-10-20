@@ -9,8 +9,8 @@ const InfoCard = ({data, styleName, onPress, className}) => {
                 <img className="img-fluid bg-white" src={data.img}/>
             </div>
             <div className="jr-card-body br-break">
-                <h4 className="mb-0"><strong className="fontTitle">{data.title} </strong></h4>
-                <p className="mb-0">{data.subTitle} </p>
+                <h4 className="mb-0"><strong className="fontTitle" style={{color: 'white'}}>{data.title} </strong></h4>
+                <p className="mb-0" style={{color: 'white'}}>{data.subTitle} </p>
             </div>
 
         </div>

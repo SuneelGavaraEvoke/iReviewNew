@@ -50,6 +50,39 @@ img.listItem {
 ul.alignText {
     text-align: left;
 }
+.search {
+    position: relative;
+    border-radius: 10px;
+    background-color: white;
+    margin-left: 0px;
+    width: 100%;
+} 
+.searchIcon {
+    height: 100%;
+    width: 20px;
+    position: absolute;
+    pointer-events: 'none';
+    display: flex;
+    align-items: 'center';
+    justify-content: 'center';
+}
+.inputRoot {
+    color: inherit;
+    width: 100%
+}
+.inputInput {
+    padding-left: 20px;
+    width: 100%;
+}
+.rootHeader {
+    width: 100%;
+}
+.typoGraphy {
+    display: block;
+}
+.grow {
+    flex-grow: 1;
+}
 @media only screen and (max-width: 786px) {
     ul.alignText {
        text-align: center; 
@@ -64,5 +97,11 @@ ul.alignText {
     .rightCard {
         margin: auto;
         float: none;
+    }
+    .search {
+        width: auto;
+    }
+    .inputInput {
+        width: 120px;
     }
 }
