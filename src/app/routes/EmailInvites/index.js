@@ -4,6 +4,7 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import SearchBox from '../../../components/SearchBox';
+import Card from '@material-ui/core/Card';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import './email.css';
 
@@ -18,7 +19,7 @@ const columns = [
     {
         dataField: 'storyname',
         text: 'StoryName',
-        headerAlign: 'left', 
+        headerAlign: 'center', 
         headerStyle: {
             overflow: 'scroll'
         }
@@ -26,7 +27,7 @@ const columns = [
     {
         dataField: 'date',
         text: 'Created Date',
-        headerAlign: 'left', 
+        headerAlign: 'center', 
         headerStyle: {
             overflow: 'scroll'
         }
@@ -34,7 +35,7 @@ const columns = [
     {
         dataField: 'invites',
         text: 'InvitesSent',
-        headerAlign: 'left', 
+        headerAlign: 'center', 
         headerStyle: {
             overflow: 'scroll'
         }
@@ -42,7 +43,7 @@ const columns = [
     {
         dataField: 'responsed',
         text: 'Invites Responsed',
-        headerAlign: 'left', 
+        headerAlign: 'center', 
         headerStyle: {
             overflow: 'scroll'
         }
@@ -51,6 +52,7 @@ const columns = [
         dataField: 'invite',
         text: '',
         formatter: duplicateButton,
+        headerAlign: 'center', 
     }
 ]
 const products = [
@@ -120,11 +122,14 @@ export default class EmailInvites extends Component {
                    </AppBar>
                 </div>
                 <div className="row mt-4 mx-2">
+                <Card style={{overflow: 'visible'}}>
                 <BootstrapTable bootstrap4 keyField="storyname"  
                 bordered={ false }  
+                rowStyle={{textAlign: 'center'}} 
                 data={ products } 
                 columns={ columns } 
                 pagination={pagination} />
+               </Card>
                </div>
             </div>
         )

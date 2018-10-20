@@ -4,6 +4,7 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import './stories.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Card from '@material-ui/core/Card';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import SearchBox from '../../../components/SearchBox';
 import {arrayMove} from 'react-sortable-hoc';
@@ -19,19 +20,23 @@ const columns = [
     {
         dataField: 'storyname',
         text: 'StoryName',
+        headerAlign: 'center', 
     },
     {
         dataField: 'date',
-        text: 'Date Created'
+        text: 'Date Created',
+        headerAlign: 'center', 
     }, 
     {
         dataField: 'invites',
-        text: 'Invites'
+        text: 'Invites',
+        headerAlign: 'center', 
     },
     {
         dataField: 'download',
         text: '',
-        formatter: duplicateButton
+        formatter: duplicateButton,
+        headerAlign: 'center', 
     }
 ]
 const products = [
@@ -112,42 +117,17 @@ export default class StoryGuides extends Component {
                </AppBar>
             </div>
                <div className="row  mt-4 mx-2">
-               <BootstrapTable bootstrap4 
-               keyField="storyname"   
-               bordered={ false }  
-               data={ products } 
-               columns={ columns } 
-               pagination={pagination}/>
+               <Card style={{overflow: 'visible'}}>
+                   {/* <BootstrapTable bootstrap4  keyField="storyname"  
+                   rowStyle={{textAlign: 'center'}} 
+                   bordered={ false }  
+                   data={ products } 
+                   columns={ columns } 
+                   pagination={pagination}/> */}
+               </Card>
                </div>
            </div>
         )
-    }
-    validationObject = () => {
-
-        const {name, description, toDos} = this.state;
-        return {
-            [`Please Enter Valid Name`]: name != undefined ? name.length > 0 : false,
-            [`Please Enter Valid Description`]: description != undefined ? description.length > 0 : false,
-            [`Please Enter At Least One Question`]: toDos[0].length > 0 || (toDos[1] != undefined ? toDos[1].length > 0 : false) || (toDos[2] != undefined ? toDos[2].length > 0 : false)
-        }
-    }
-    validateAndPerformApiCall = () => {
-
-        const validationObject = this.validationObject();
-        const keys = Object.keys(validationObject);
-        let error = "";
-        for (let i = 0; i < keys.length; i++) {
-            let key = keys[i];
-            if (validationObject[key] == false) {
-                error = key;
-                break;
-            }
-        }
-        error != "" ? window.alert(error) : this.togglePopup()
-    }
-    togglePopup = () => {
-        const {isShowPopUp} = this.state;
-        this.setState({isShowPopUp: !isShowPopUp, name: "", description: "", toDos: [""]})
     }
 }
 
