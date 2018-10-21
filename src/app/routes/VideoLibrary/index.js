@@ -1,139 +1,80 @@
 import React, {Component} from 'react';
-import SearchBar from '@opuscapita/react-searchbar';
-import BootstrapTable, {SizePerPageDropDown, TableHeaderColumn} from 'react-bootstrap-table-next';
-import paginationFactory from 'react-bootstrap-table2-paginator';
+import Table from '@material-ui/core/Table';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import TableHead from '@material-ui/core/TableHead';
+import TableBody from '@material-ui/core/TableBody';
+import TablePagination from '@material-ui/core/TablePagination';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import {Tooltip} from 'reactstrap';
 import '../VideoLibrary/style.css';
-
-function thumbanilView(cell, row) {
-    return (
-        <img src={row.videoThumbnail} style={{width: '100%', height: 'auto'}}/>
-    )
-}
-function downLoadButtonView(cell, row) {
-    return (
-         <button style={{backgroundColor: 'green', color: 'white'}}
-         onClick={() => {window.alert(`${row.user} Clicked`)}}>Download</button>
-    )
-} 
-const columns = [
-    {
-        dataField: 'videoThumbnail',
-        text: 'Video Thumbnail',
-        formatter: thumbanilView,
-        headerAlign: 'left',
-        headerStyle: {
-            overflow: 'scroll',
-        }
-    },
-    {
-        dataField: 'user',
-        text: 'User',
-        headerAlign: 'left',
-        headerStyle: {
-            overflow: 'scroll',
-        }
-    },
-    {
-        dataField: 'status',
-        text: 'Status',
-        headerAlign: 'left',
-        headerStyle: {
-            overflow: 'scroll',
-        }
-    },  
-    {
-        dataField: 'recorder',
-        text: 'Recorded',
-        headerAlign: 'left',
-        headerStyle: {
-            overflow: 'scroll',
-        }
-    }, 
-    {
-        dataField: 'invited',
-        text: 'Invited On',
-        headerAlign: 'left',
-        headerStyle: {
-            overflow: 'scroll',
-        }
-    },
-    {
-        dataField: 'actions',
-        text: 'Actions',
-        formatter: downLoadButtonView,
-        headerAlign: 'left',
-        headerStyle: {
-            overflow: 'scroll',
-        }
-    }
-]
-const products = [
-    {
-        "videoThumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHDrFJDkWfS-Eaz69yEuCAW-5VIAecZPGJ94UN4QmW9Unp09dQ",
-        "user": "Doe",
-        "status": "Sent",
-        "recorder": "Feb 4, 2018",
-        "invited": "March 15, 2018",
-        "actions": "Download"
-    },
-    {
-        "videoThumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSreWw-6C_CkyFfcQ6sTAS31UryRrEyGnt0BJ2jFto7JsJh_No4dA",
-        "user": "John",
-        "status": "Pending",
-        "recorder": "Jan 12, 2018",
-        "invited": "Feb 13, 2018",
-        "actions": "Download"
-    },
-    {
-        "videoThumbnail": "https://trueconf.com/blog/wp-content/uploads-com/2014/05/Videocall-Android-1.png",
-        "user": "Keron",
-        "status": "Pending",
-        "recorder": "Jan 10, 2018",
-        "invited": "May 25, 2018",
-        "actions": "Download"
-    },
-    {
-        "videoThumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSH7BMiRBZxJubY7uUBg6vpzDkC0hHghh4fRNfV5Pzndh5Fvmhdw",
-        "user": "Manish",
-        "status": "sent",
-        "recorder": "Jan 5, 2018",
-        "invited": "April 15, 2018",
-        "actions": "Download"
-    },
-    {
-        "videoThumbnail": "http://www.talkhelper.com/img/high_quality_video_record.png",
-        "user": "Rajal",
-        "status": "Pending",
-        "recorder": "Jan 15, 2018",
-        "invited": "March 10, 2018",
-        "actions": "Download"
-    }
-]
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import SearchBox from '../../../components/SearchBox';
 
 export default class VideoLibrary extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            searchValue: "",
-            isShowRecordPopOver: false,
-            isShowSentPopover: false,
-            headers: [
-                "Video Thumbnail",
-                "User",
-                "Status",
-                "Recorded",
-                "Invited On",
-                "Actions"
-            ],
+            page: 0,
+            rowsPerPage: 5,
             recordedVideos: 20,
-            sentVideos: 15,
+            sentVideos: 30,
+            data: [
+                {
+                    "videoThumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHDrFJDkWfS-Eaz69yEuCAW-5VIAecZPGJ94UN4QmW9Unp09dQ",
+                    "user": "Doe",
+                    "status": "Sent",
+                    "recorder": "Feb 4, 2018",
+                    "invited": "March 15, 2018",
+                    "actions": "Download"
+                },
+                {
+                    "videoThumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSreWw-6C_CkyFfcQ6sTAS31UryRrEyGnt0BJ2jFto7JsJh_No4dA",
+                    "user": "John",
+                    "status": "Pending",
+                    "recorder": "Jan 12, 2018",
+                    "invited": "Feb 13, 2018",
+                    "actions": "Download"
+                },
+                {
+                    "videoThumbnail": "https://trueconf.com/blog/wp-content/uploads-com/2014/05/Videocall-Android-1.png",
+                    "user": "Keron",
+                    "status": "Pending",
+                    "recorder": "Jan 10, 2018",
+                    "invited": "May 25, 2018",
+                    "actions": "Download"
+                },
+                {
+                    "videoThumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSH7BMiRBZxJubY7uUBg6vpzDkC0hHghh4fRNfV5Pzndh5Fvmhdw",
+                    "user": "Manish",
+                    "status": "sent",
+                    "recorder": "Jan 5, 2018",
+                    "invited": "April 15, 2018",
+                    "actions": "Download"
+                },
+                {
+                    "videoThumbnail": "http://www.talkhelper.com/img/high_quality_video_record.png",
+                    "user": "Rajal",
+                    "status": "Pending",
+                    "recorder": "Jan 15, 2018",
+                    "invited": "March 10, 2018",
+                    "actions": "Download"
+                }
+            ]
         }
     }
     pushToThumbnailView = () => {
         window.alert('Image Tapped');
+    }
+    pageChanged = (event, page) => {
+        this.setState({page})
+    }
+    handleRowsPerPage = (event) => {
+        this.setState({rowsPerPage: event.target.value})
     }
     toggleRecordHover = () => {
         const {isShowRecordPopOver} = this.state;
@@ -151,38 +92,16 @@ export default class VideoLibrary extends Component {
         )
     }
     render() {
-
-        const {recordedVideos, sentVideos} = this.state;
-        const rowEvents = {
-            onClick: (e, row, rowIndex) => {
-                this.props.history.push({pathname: './videoPlayerDetail',   
-                state: {detail: this.getClips()}})
-            }
-          };
-
-          const pagination = paginationFactory({
-            page: 1,
-            sizePerPage: 5,
-            sizePerPageList: [,
-                {
-                    text: "5",
-                    value: 5
-                },
-                {
-                    text: '10',
-                    value: 10
-                },
-                {
-                    text: 'All',
-                    value: products.length
-                }
-            ],
-
-        })
+        const {data, sentVideos, page, rowsPerPage, recordedVideos} = this.state;
         return (
-            <div class="app-wrapper">
-               <div className="container">
-                <div className="row">
+               <div className="container-fluid" style={{padding: 0}}>
+                   <AppBar className="app-main-header" position="static">
+                        <Toolbar>
+                            <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Videos</h4>
+                            <SearchBox styleName="d-none d-sm-block"/>
+                         </Toolbar>
+                   </AppBar>
+                <div className="row mt-2 mx-2">
                 <Tooltip placement="bottom" target="numberOfVideoRecords" isOpen={this.state.isShowRecordPopOver} toggle={this.toggleRecordHover}>Number Of Users Entered To Record This Video</Tooltip>
                 <Tooltip placement="bottom" target="numberOfSents" isOpen={this.state.isShowSentPopover} toggle={this.toggleSentHover}>Number of users that sent in their video</Tooltip>
                   <div className="col-sm-4">
@@ -197,25 +116,54 @@ export default class VideoLibrary extends Component {
                        <p style={{color: '#7F7F7F', marginBottom: '0px', textAlign: 'center'}}>Videos</p>
                   </div>
                 </div>
-               </div>
-                  <div className="row searchRow">
-                   <div className="col col-sm-6">
-                      <h1>Videos</h1>
-                   </div>
-                   <div className="col col-sm-6 searchBarColumn">
-                       <SearchBar
-                       onSearch={(text) => {console.log(text)}}
-                       value={this.state.searchValue}/>
-                       </div>
-                   </div>
-                   <BootstrapTable  bootstrap4   
-                   bordered={ false } 
-                   keyField="videoThumbnail"  
-                   data={ products } 
-                   columns={ columns }
-                   pagination={pagination}
-                   rowEvents={ rowEvents }
-                   />
+                <Paper className="mx-4" style={{display: 'flex', marginTop: 20, overflow: 'auto'}}>
+                <Table style={{width: '100%'}}>
+                    <TableHead style={{backgroundColor: 'black'}}>
+                        <TableRow>
+                            <TableCell style={{color: 'white', fontSize: 15}}>VideoThumbnail</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>User</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>Status</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>Recorded</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>Invited</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>Actions</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody> {
+                        data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        .map((value, index) => {
+                            return (
+                                <TableRow style={{backgroundColor: index % 2 == 0 ? '#FAFAFA' : 'white'}}>
+                                    <TableCell>
+                                        <img style={{maxWidth: 100, maxHeight: 100}} src={value.videoThumbnail}/>
+                                    </TableCell>
+                                    <TableCell>{value.user}</TableCell>
+                                    <TableCell>{value.status}</TableCell>
+                                    <TableCell>{value.recorder}</TableCell>
+                                    <TableCell>{value.invited}</TableCell>
+                                    <TableCell>
+                                        <Button style={{background: 'green', color: 'white'}}>{value.actions}</Button>
+                                    </TableCell>
+                                </TableRow>
+                            )
+                        })
+                    }
+                    </TableBody>
+                    <TablePagination
+                    backIconButtonProps={{
+                        'aria-label': 'Previous Page',
+                    }}
+                    nextIconButtonProps={{
+                        'aria-label': 'Next Page',
+                    }}                    
+                    component="div"
+                    count={data.length}
+                    page={page}
+                    rowsPerPage={rowsPerPage}
+                    onChangePage={this.pageChanged}
+                    onChangeRowsPerPage={this.handleRowsPerPage}
+                    />
+                </Table>
+              </Paper>
           </div>
         )
     }

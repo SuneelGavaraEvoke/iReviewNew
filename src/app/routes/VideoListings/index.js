@@ -8,10 +8,9 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import Toolbar from '@material-ui/core/Toolbar';
-import paginationFactory from 'react-bootstrap-table2-paginator';
+import Paper from '@material-ui/core/Paper';
 import SearchBox from '../../../components/SearchBox';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import BootstrapTable, {SizePerPageDropDown} from 'react-bootstrap-table-next';
 import './VideoListings.css';
 
 const columns = [
@@ -129,6 +128,9 @@ export default class VideoListings extends Component {
             }]
         }
     }
+    handleOnClick = () => {
+        this.props.history.push('./video-details');
+    }
     handleChangePage = (event, page) => {
         this.setState({page})
     }
@@ -137,23 +139,6 @@ export default class VideoListings extends Component {
     }
      render() {
          const {page, rowsPerPage, data} = this.state;
-        const rowEvents = {
-            onClick: (e, row, rowIndex) => {
-                this.props.history.push({pathname: './video-details'})
-          }
-        }
-        // const pagination = paginationFactory({
-        //     page: 1,
-        //     sizePerPage: 5,
-        //     sizePerPageList: [ {
-        //         text: '5', value: 5
-        //       }, {
-        //         text: '10', value: 10
-        //       }, {
-        //         text: 'All', value: products.length
-        //       } ]
-        // });          
-
         return (
             <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
             <div style={{width: '100%'}}>
@@ -166,9 +151,9 @@ export default class VideoListings extends Component {
             </div>
             <div className="row mt-4 mx-2">
               <div className="col-xs-12 col-sm-12 col-md-12">
-              <Card style={{overflow: 'visible'}}>
+              <Paper style={{width: '100%', display: 'flex', marginTop: 20, overflow: 'auto'}}>
                 <Table>
-                    <TableHead style={{backgroundColor: 'gray'}}>
+                    <TableHead style={{backgroundColor: 'black'}}>
                         <TableRow>
                             <TableCell style={{color: 'white', fontSize: 15}}>StoryName</TableCell>
                             <TableCell style={{color: 'white', fontSize: 15}}>Count</TableCell>
@@ -177,9 +162,9 @@ export default class VideoListings extends Component {
                     </TableHead>
                     <TableBody> {
                         data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        .map(value => {
+                        .map((value, index) => {
                             return (
-                                <TableRow>  
+                                <TableRow style={{backgroundColor: index % 2 == 0 ? '#FAFAFA' : 'white'}} onClick={this.handleOnClick}>
                                 <TableCell>{value.name}</TableCell>
                                 <TableCell>{value.count}</TableCell>
                                 <TableCell>{value.createdDate}</TableCell>
@@ -203,7 +188,7 @@ export default class VideoListings extends Component {
                     onChangeRowsPerPage={this.handleChangeRowsPerPage}
                     />
                 </Table>
-             </Card>
+             </Paper>
               </div>
             </div>
             </div>
