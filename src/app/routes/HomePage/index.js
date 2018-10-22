@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import InfoCard from '../../../components/InfoCard';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Card from '@material-ui/core/Card';
 import './home.css';
 
 const storyGuides = {
@@ -66,7 +67,7 @@ export default class HomePage extends Component {
     render() {
 
         return (
-            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
+            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0, backgroundColor: '#F8F9FA'}}>
               <div className="rootHeader">
               <AppBar className="app-main-header" position="static">
                 <Toolbar>
@@ -95,9 +96,11 @@ export default class HomePage extends Component {
                <div className="page-heading d-sm-flex justify-content-sm-between align-items-sm-center" style={{width: '100%', marginBottom: 10}}>
                   <h2 className="title mb-3 mb-sm-0">Videos</h2>
                   </div>
-                <div className="col-xs-12 col-sm-12 d-inline">
-                     <ul className="list-inline mx-1 my-4 alignText">{this.getThumbnailList()}
+                <div className="col-xs-12 col-sm-12 d-inline" style={{padding: 0}}>
+                     <Card>
+                     <ul style={{paddingLeft: 20, paddingRight: 20}} className="list-inline mx-1 my-4 alignText">{this.getThumbnailList()}
                      </ul>
+                     </Card>
                   </div>
                </div>
 

@@ -37,7 +37,7 @@ html, body, .full-height {
 }
 .bottmColumnHeight {
     height: 100px;
-    background-color: rgb(241, 237, 237);
+    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -50,7 +50,7 @@ html, body, .full-height {
     justify-content: flex-start;
     align-items: center;
     padding-top: 10px;
-    background-color: rgb(241, 237, 237);
+    background-color: white;
 }
 .middleColumnFlex {
     display: flex;
@@ -58,7 +58,7 @@ html, body, .full-height {
     justify-content: flex-start;
     align-items: flex-start;
     padding-top: 20px;
-    background-color: rgb(241, 237, 237);
+    background-color: white;
 }
 .imageContainer {
     display: flex;
@@ -140,8 +140,11 @@ html, body, .full-height {
     justify-content: flex-end;
     margin-bottom: 10px;
 }
+.removePadding {
+    padding: 0px;
+}
 .bgTheme {
-    background-color: rgb(241, 237, 237);
+    background-color: white;
 }
 .uploadImage {
     text-align: left;

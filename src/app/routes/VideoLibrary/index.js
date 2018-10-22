@@ -95,8 +95,16 @@ export default class VideoLibrary extends Component {
     onChange = (event) => {
         this.setState({searchText: event.target.value})
     }
-    render() {
+    onRowSelection = (key) => {
         debugger;
+        console.log(key);
+        /*
+        if (column != 5) {
+            this.props.history.push('./videoPlayerDetail');
+       }
+*/
+    }
+    render() {
         const {data, sentVideos, page, rowsPerPage, recordedVideos, searchText} = this.state;
         return (
                <div className="container-fluid" style={{padding: 0}}>
@@ -123,7 +131,7 @@ export default class VideoLibrary extends Component {
                 </div>
                 <Paper className="mx-4" style={{display: 'flex', marginTop: 20, overflow: 'auto'}}>
                 <Table style={{width: '100%'}}>
-                    <TableHead style={{backgroundColor: 'black'}}>
+                    <TableHead style={{backgroundColor: 'gray'}}>
                         <TableRow>
                             <TableCell style={{color: 'white', fontSize: 15}}>VideoThumbnail</TableCell>
                             <TableCell style={{color: 'white', fontSize: 15}}>User</TableCell>
@@ -137,16 +145,19 @@ export default class VideoLibrary extends Component {
                         data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((value, index) => {
                             return (
-                                <TableRow style={{backgroundColor: index % 2 == 0 ? '#FAFAFA' : 'white'}}>
+                                <TableRow selected={true} style={{backgroundColor: index % 2 == 0 ? '#FAFAFA' : 'white'}}>
                                     <TableCell>
-                                        <img style={{maxWidth: 100, maxHeight: 100}} src={value.videoThumbnail}/>
+                                        <img style={{maxWidth: 100, maxHeight: 100, marginTop: 5, marginBottom: 5}} src={value.videoThumbnail}/>
                                     </TableCell>
                                     <TableCell>{value.user}</TableCell>
                                     <TableCell>{value.status}</TableCell>
                                     <TableCell>{value.recorder}</TableCell>
                                     <TableCell>{value.invited}</TableCell>
                                     <TableCell>
-                                        <Button style={{background: 'green', color: 'white'}}>{value.actions}</Button>
+                                        <Button style={{background: 'green', color: 'white'}} onClick={() => {
+                                            debugger;
+                                            window.alert('downLoadAction performed');
+                                        }}>{value.actions}</Button>
                                     </TableCell>
                                 </TableRow>
                             )
@@ -154,6 +165,7 @@ export default class VideoLibrary extends Component {
                     }
                     </TableBody>
                     <TablePagination
+                    style={{display: 'flex'}}
                     backIconButtonProps={{
                         'aria-label': 'Previous Page',
                     }}

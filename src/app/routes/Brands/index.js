@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Card from '@material-ui/core/Card';
 import '../Brands/brands.css';
 import { SketchPicker } from 'react-color'
 const Delete  = require('../../../../src/Images/delete.png');
@@ -33,19 +34,20 @@ export default class Brands extends Component {
     render() {
         const {imagePath} = this.state;
         return (
-            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
+            <div class="container-fluid removePadding" style={{backgroundColor: '#F8F9FA'}}>
             <div style={{width: '100%'}}>
              <AppBar className="app-main-header" position="static">
               <Toolbar>
-                  <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Brands</h4>
+                  <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Brand</h4>
               </Toolbar>
              </AppBar>
             </div>
-                 <div class="container-fluid mt-4">
-                    <div class="row row-first">
+                <Card style={{marginLeft: 10, width: 'calc(100% - 20px)', marginTop: 20, overflow: 'visible'}}>
+                 <div class="container-fluid mt-4 bg-white">
+                    <div class="row">
                        <div class="col col-sm-4 topColumnHeight topColumnFlex">
                             <div class="leftDiv">
-                                 <p style-={{marginTop: 10, width: '100%'}}>Company Logo:</p>
+                                 <h4 style-={{marginTop: 10, width: '100%'}}>Company Logo:</h4>
                             </div>
                             <div class="imageContainer justify-content-center align-items-center"> 
                                   {imagePath == "" ? 
@@ -58,7 +60,7 @@ export default class Brands extends Component {
                                    </button>
                             </div>
                        </div>
-                        <div className="col col-sm-8 bgTheme">
+                        <div className="col col-sm-8">
                         <div class="flexColumn">
                                   <input type='file' onChange={this.handleChange} accept="image/png, image/jpeg" class="marginTop10"  title="Hello World" id="exampleInputFile" aria-describedby="fileHelp"/>
                                   <div class="selectImageView">
@@ -92,6 +94,7 @@ export default class Brands extends Component {
                         </div>
                     </div>
                  </div>
+                 </Card>
              </div>
         )
     }

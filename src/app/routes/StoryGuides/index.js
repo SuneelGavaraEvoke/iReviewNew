@@ -86,7 +86,7 @@ export default class StoryGuides extends Component {
               <Paper style={{width: '100%', display: 'flex', marginTop: 20, overflow: 'auto'}}>
                    <Table>
                        <TableHead>
-                           <TableRow style={{backgroundColor: 'black'}}>
+                           <TableRow style={{backgroundColor: 'gray'}}>
                                <TableCell style={{color: 'white', fontSize: 15}}>StoryName</TableCell>
                                <TableCell style={{color: 'white', fontSize: 15}}>CreatedDate</TableCell>
                                <TableCell style={{color: 'white', fontSize: 15}}>Invites</TableCell>
@@ -106,6 +106,7 @@ export default class StoryGuides extends Component {
                        }
                        </TableBody>
                        <TablePagination
+                       style={{display: 'flex'}}
                        backIconButtonProps={{
                            'aria-label': 'Previous Page',
                         }}

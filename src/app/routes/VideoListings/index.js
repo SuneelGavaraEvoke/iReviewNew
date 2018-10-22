@@ -157,7 +157,7 @@ export default class VideoListings extends Component {
               <div className="col-xs-12 col-sm-12 col-md-12">
               <Paper style={{width: '100%', display: 'flex', marginTop: 20, overflow: 'auto'}}>
                 <Table>
-                    <TableHead style={{backgroundColor: 'black'}}>
+                    <TableHead style={{backgroundColor: 'gray'}}>
                         <TableRow>
                             <TableCell style={{color: 'white', fontSize: 15}}>StoryName</TableCell>
                             <TableCell style={{color: 'white', fontSize: 15}}>Count</TableCell>
@@ -177,7 +177,8 @@ export default class VideoListings extends Component {
                         })
                     }
                     </TableBody>
-                    <TablePagination
+                    <TablePagination 
+                    style={{display: 'flex'}}
                     backIconButtonProps={{
                         'aria-label': 'Previous Page',
                     }}

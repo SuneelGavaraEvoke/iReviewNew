@@ -66,7 +66,7 @@ export default class EmailInvites extends Component {
     render() {
         const {data, page, rowsPerPage, searchText} = this.state;
         return (
-            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
+            <div class="container-fluid paddingZero">
                 <div style={{width: '100%'}}>
                    <AppBar className="app-main-header" position="static">
                        <Toolbar>
@@ -76,10 +76,10 @@ export default class EmailInvites extends Component {
                    </AppBar>
                 </div>
                 <div className="row mt-4 mx-2">
-                   <Paper style={{width: '100%', display: 'flex', padding: 0, overflow: 'auto'}}>
-                      <Table>
+                   <Paper className="mx-4" style={{width: '100%', display: 'flex', padding: 0, overflow: 'auto'}}>
+                      <Table style={{width: '100%'}}>
                           <TableHead>
-                              <TableRow style={{backgroundColor: 'black'}}>
+                              <TableRow style={{backgroundColor: 'gray'}}>
                                   <TableCell style={{color: 'white', fontSize: 15}}>StoryName</TableCell>
                                   <TableCell style={{color: 'white', fontSize: 15}}>Date</TableCell>
                                   <TableCell style={{color: 'white', fontSize: 15}}>Invites</TableCell>
@@ -101,6 +101,7 @@ export default class EmailInvites extends Component {
                           }
                           </TableBody>
                           <TablePagination
+                          style={{display: 'flex'}}
                           count={data.length}
                           backIconButtonProps={{'aria-label': 'Previous Page'}}
                           nextIconButtonProps={{'aria-label': 'Next Page'}}   
