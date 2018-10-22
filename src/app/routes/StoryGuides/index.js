@@ -10,7 +10,7 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import './stories.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button'
 import SearchBox from '../../../components/SearchBox';
 
 export default class StoryGuides extends Component {
@@ -18,6 +18,7 @@ export default class StoryGuides extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            searchText: "",
             page: 0,
             rowsPerPage: 5,
             data : [
@@ -61,15 +62,21 @@ export default class StoryGuides extends Component {
     handleRowsPerPage = (event) => {
         this.setState({rowsPerPage: event.target.value})
     }
+    onChangeText = (event) => {
+        this.setState({searchText: event.target.value})
+    }
     render() {
-        const {data, page, rowsPerPage} = this.state;
+        const {data, page, rowsPerPage, searchText} = this.state;
         return (
             <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
             <div style={{width: '100%'}}>
                <AppBar className="app-main-header" position="static">
                    <Toolbar>
                         <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>StoryGuides</h4>
-                        <SearchBox styleName="d-none d-sm-block"/>
+                        <SearchBox onChange={this.onChangeText} value={searchText} styleName="d-none d-sm-block"/>
+                        <Button style={{color: 'white', marginLeft: 10}}
+                        onClick={() => {this.props.history.push('./create-new-story')}}
+                        >Create New StoryGuide</Button>
                   </Toolbar>
                </AppBar>
             </div>

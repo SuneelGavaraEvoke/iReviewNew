@@ -46,7 +46,7 @@ class SignIn extends React.Component {
             <div
                 className="app-login-container d-flex justify-content-center align-items-center animated slideInUpTiny animation-duration-3">
                 <div className="app-login-main-content">
-                    <div className="app-logo-content d-flex align-items-center justify-content-center" style={{backgroundColor: '#BDBDBD'}}>
+                    <div className="app-logo-content d-flex align-items-center justify-content-center" style={{backgroundColor: 'primary'}}>
                         <Link className="logo-lg" to="/" title="Jambo">
                             <img src="https://media.licdn.com/dms/image/C510BAQHKDV_VgJa-Lg/company-logo_200_200/0?e=2159024400&v=beta&t=vJ9TQeEwusMDrc6nCrfeQ2d_EEX0ez4VToJGC9NfrOs" alt="jambo" title="jambo"/>
                         </Link>
@@ -82,7 +82,7 @@ class SignIn extends React.Component {
                                         <Button onClick={() => {
                                             this.props.showAuthLoader();
                                             this.props.userSignIn({email, password});
-                                        }} variant="raised" color='#BDBDBD'>
+                                        }} variant="raised" color='primary'>
                                             <IntlMessages id="appModule.signIn"/>
                                         </Button>
 
@@ -91,7 +91,7 @@ class SignIn extends React.Component {
                                         </Link>
                                     </div>
 
-                                    <div className="app-social-block my-1 my-sm-3">
+                                    {/* <div className="app-social-block my-1 my-sm-3">
                                         <IntlMessages
                                             id="signIn.connectWith"/>
                                         <ul className="social-link">
@@ -136,7 +136,7 @@ class SignIn extends React.Component {
                                                 </IconButton>
                                             </li>
                                         </ul>
-                                    </div>
+                                                        </div>*/}
 
                                 </fieldset>
                             </form>

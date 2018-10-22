@@ -19,6 +19,7 @@ export default class VideoLibrary extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            searchText: "",
             page: 0,
             rowsPerPage: 5,
             recordedVideos: 20,
@@ -91,14 +92,18 @@ export default class VideoLibrary extends Component {
             {"name": "Third Clip",  "url": "http://techslides.com/demos/sample-videos/small.mp4"}]
         )
     }
+    onChange = (event) => {
+        this.setState({searchText: event.target.value})
+    }
     render() {
-        const {data, sentVideos, page, rowsPerPage, recordedVideos} = this.state;
+        debugger;
+        const {data, sentVideos, page, rowsPerPage, recordedVideos, searchText} = this.state;
         return (
                <div className="container-fluid" style={{padding: 0}}>
                    <AppBar className="app-main-header" position="static">
                         <Toolbar>
                             <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Videos</h4>
-                            <SearchBox styleName="d-none d-sm-block"/>
+                            <SearchBox onChange={this.onChange} value={searchText} styleName="d-none d-sm-block"/>
                          </Toolbar>
                    </AppBar>
                 <div className="row mt-2 mx-2">

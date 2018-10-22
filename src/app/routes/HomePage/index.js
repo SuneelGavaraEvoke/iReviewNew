@@ -71,8 +71,6 @@ export default class HomePage extends Component {
               <AppBar className="app-main-header" position="static">
                 <Toolbar>
                     <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>DashBoard</h4>
-                    {/* <SearchBox styleName="d-none d-sm-block"/> */}
-                    {/* <Button size="small" className="ml-3 text-white d-none d-sm-block">Login</Button> */}
                 </Toolbar>
             </AppBar>
               </div>

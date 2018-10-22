@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Card from '@material-ui/core/Card';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import ToDoList from '../../../components/todo/ToDoList';
@@ -54,11 +53,13 @@ export default class CreateNewStory extends Component {
     render() {
         return (
           <div className="container-fluid" style ={{paddingLeft: 0, paddingRight: 0}}>
-            <AppBar position="static" color="white">
-                  <Toolbar>
-                      <Typography variant="h3">Create New StoryGuide</Typography>
+            <div style={{width: '100%'}}>
+               <AppBar className="app-main-header" position="static">
+                   <Toolbar>
+                        <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Create New StoryGuide</h4>
                   </Toolbar>
-            </AppBar>
+               </AppBar>
+            </div>
             <div className="container-fluid" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
             <Card style={{marginTop: 20, width: '70%'}}>
                         <TextField fullWidth 

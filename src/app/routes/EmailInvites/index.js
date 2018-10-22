@@ -17,6 +17,7 @@ export default class EmailInvites extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            searchText: "",
             page: 0,
             rowsPerPage: 5,
             data: [
@@ -59,16 +60,18 @@ export default class EmailInvites extends Component {
             ]
         }
     }
-
+    onChangeText = (event) => {
+        this.setState({searchText: event.target.value})
+    }
     render() {
-        const {data, page, rowsPerPage} = this.state;
+        const {data, page, rowsPerPage, searchText} = this.state;
         return (
             <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
                 <div style={{width: '100%'}}>
                    <AppBar className="app-main-header" position="static">
                        <Toolbar>
                             <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Email Invites</h4>
-                            <SearchBox styleName="d-none d-sm-block"/>
+                            <SearchBox onChange={this.onChangeText} value={searchText} styleName="d-none d-sm-block"/>
                       </Toolbar>
                    </AppBar>
                 </div>
