@@ -43,7 +43,7 @@ export default class Brands extends Component {
              </AppBar>
             </div>
                 <Card style={{marginLeft: 10, width: 'calc(100% - 20px)', marginTop: 20, overflow: 'visible'}}>
-                 <div class="container-fluid mt-4 bg-white">
+                 <div class="container-fluid mt-4">
                     <div class="row">
                        <div class="col col-sm-4 topColumnHeight topColumnFlex">
                             <div class="leftDiv">

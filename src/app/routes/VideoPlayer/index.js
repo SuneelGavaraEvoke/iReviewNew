@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import ReactPlayer from 'react-player';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import Play from '../../../assets/images/Play.png';
 import Popup from 'reactjs-popup';
 
@@ -59,6 +60,13 @@ export default class VideoPlayerDetail extends Component {
         return(
             <body>
             <div class="mainContainer">
+            <div style={{width: '100%'}}>
+            <AppBar className="app-main-header" position="static">
+                <Toolbar>
+                        <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Video Name</h4>
+                  </Toolbar>
+               </AppBar>
+            </div>
                <Popup open={isPopUpOpened} closeOnDocumentClick onClose={() => {this.setState({isPopUpOpened: false})}}>
                    <div style={{flex: 1, height: window.screen.height * 0.5, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center'}}>
                          <ReactPlayer width="100%" height="60%" 
@@ -77,9 +85,6 @@ export default class VideoPlayerDetail extends Component {
                          </div>
                    </div>
                </Popup>
-               <div class="headerView whitebackgroundColor">
-                 <h3>Video Details</h3>
-               </div>
                <div className="playerView whitebackgroundColor">
                   <ReactPlayer
                   width="100%"
@@ -92,10 +97,10 @@ export default class VideoPlayerDetail extends Component {
                <div className="bottomView whitebackgroundColor">
                  <div className="row">
                     <div className="col-xs-12 col-sm-6 col-md-4">
-                            <h3>StoryGuide Name</h3>
+                            <h2>StoryGuide Name</h2>
                             <p>By SuneelKumar</p>
                             <p>sunilkumargavara@gmail.com</p>
-                            <h1 style={{color: '#77B9E6'}} onClick={() => {this.props.history.goBack();}}>Back To Gallery</h1>
+                            <h3 onClick={() => {this.props.history.goBack();}}>Back To Gallery</h3>
                     </div>
                     <div className="col-xs-12 col-sm-6 col-md-4">
                             <div class="mb-2">
@@ -112,7 +117,7 @@ export default class VideoPlayerDetail extends Component {
                </div>
                <div className="row individualClips whitebackgroundColor">
                   <div className="col-xs-12 col-sm-12 com-md-12">
-                      <h1 style={{color: '#77B9E6'}}>Individual Clips</h1>
+                      <h1>Individual Clips</h1>
                   </div>
                   <div className="row col-xs-12 com-sm-12 col-md-12"> {this.getInnerComponents()}
                   </div>

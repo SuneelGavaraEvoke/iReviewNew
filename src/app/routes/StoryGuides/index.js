@@ -68,11 +68,11 @@ export default class StoryGuides extends Component {
     render() {
         const {data, page, rowsPerPage, searchText} = this.state;
         return (
-            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
+            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0, backgroundColor: '#F8F9FA'}}>
             <div style={{width: '100%'}}>
                <AppBar className="app-main-header" position="static">
                    <Toolbar>
-                        <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Campaign Name</h4>
+                        <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Campaign</h4>
                         <SearchBox onChange={this.onChangeText} value={searchText} styleName="d-none d-sm-block"/>
                         <Button style={{color: 'white', marginLeft: 10}}
                         onClick={() => {this.props.history.push('./create-new-story')}}
@@ -80,16 +80,16 @@ export default class StoryGuides extends Component {
                   </Toolbar>
                </AppBar>
             </div>
-               <div className="row  mt-4 mx-2">
+               <div className="row mx-2">
                <div className="col-xs-12 col-sm-12 col-md-12">
 
               <Paper style={{width: '100%', display: 'flex', marginTop: 20, overflow: 'auto'}}>
                    <Table>
                        <TableHead>
                            <TableRow style={{backgroundColor: 'gray'}}>
-                               <TableCell style={{color: 'white', fontSize: 15}}>Compaign</TableCell>
+                               <TableCell style={{color: 'white', fontSize: 15}}>Campaign Name</TableCell>
                                <TableCell style={{color: 'white', fontSize: 15}}>Created Date</TableCell>
-                               <TableCell style={{color: 'white', fontSize: 15}}>Invites Count</TableCell>
+                               <TableCell style={{color: 'white', fontSize: 15}}>Total Invites</TableCell>
                            </TableRow>
                        </TableHead>
                        <TableBody>{

@@ -104,13 +104,18 @@ export default class VideoLibrary extends Component {
        }
 */
     }
+    getheaderStyles = () => ({
+        color: 'white', 
+        fontSize: 15, 
+        padding: 0
+    })
     render() {
         const {data, sentVideos, page, rowsPerPage, recordedVideos, searchText} = this.state;
         return (
-               <div className="container-fluid" style={{padding: 0}}>
+               <div className="container-fluid" style={{padding: 0, backgroundColor: '#F8F9FA'}}>
                    <AppBar className="app-main-header" position="static">
                         <Toolbar>
-                            <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Videos</h4>
+                            <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Campaign Videos</h4>
                             <SearchBox onChange={this.onChange} value={searchText} styleName="d-none d-sm-block"/>
                          </Toolbar>
                    </AppBar>
@@ -134,11 +139,11 @@ export default class VideoLibrary extends Component {
                     <TableHead style={{backgroundColor: 'gray'}}>
                         <TableRow>
                             <TableCell style={{color: 'white', fontSize: 15}}>Video</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>User Name</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Status</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Responsnded Count</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Invited Count</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Actions</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15, padding: 0}}>User Name</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15, padding: 0}}>Status</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15, padding: 0}}>Total Responses</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15, padding: 0}}>Total Invites</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15, padding: 0}}>Actions</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody> {
@@ -148,7 +153,7 @@ export default class VideoLibrary extends Component {
                                 <TableRow selected={true} 
                                  onClick={() => {this.props.history.push('./videoPlayerDetail')}}
                                  style={{backgroundColor: index % 2 == 0 ? '#FAFAFA' : 'white'}}>
-                                    <TableCell>
+                                    <TableCell textA>
                                         <img style={{maxWidth: 100, maxHeight: 100, marginTop: 5, marginBottom: 5}} src={value.videoThumbnail}/>
                                     </TableCell>
                                     <TableCell>{value.user}</TableCell>

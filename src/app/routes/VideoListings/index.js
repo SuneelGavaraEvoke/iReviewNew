@@ -67,63 +67,63 @@ export default class VideoListings extends Component {
             page: 0,
             rowsPerPage: 5,
             data: [{
-                name: "Story 1",
+                name: "Campaign 1",
                 count: "10",
                 createdDate: "Jan 12, 2018"
             }, {
-                name: "Story 2",
+                name: "Campaign 2",
                 count: "11",
                 createdDate: "Jan 13, 2018"
             }, {
-                name: "Story 3",
+                name: "Campaign 3",
                 count: "12",
                 createdDate: "Jan 14, 2018"
             }, {
-                name: "Story 4",
+                name: "Campaign 4",
                 count: "13",
                 createdDate: "Jan 15, 2018"
             }, {
-                name: "Story 5",
+                name: "Campaign 5",
                 count: "14",
                 createdDate: "Jan 16, 2018"
             }, {
-                name: "Story 6",
+                name: "Campaign 6",
                 count: "15",
                 createdDate: "Jan 17, 2018"
             }, {
-                name: "Story 7",
+                name: "Campaign 7",
                 count: "16",
                 createdDate: "Jan 18, 2018"
             }, {
-                name: "Story 8",
+                name: "Campaign 8",
                 count: "17",
                 createdDate: "Jan 19, 2018"
             }, {
-                name: "Story 9",
+                name: "Campaign 9",
                 count: "17",
                 createdDate: "Jan 20, 2018"
             }, {
-                name: "Story 10",
+                name: "Campaign 10",
                 count: "17",
                 createdDate: "Jan 21, 2018"
             }, {
-                name: "Story 10",
+                name: "Campaign 10",
                 count: "17",
                 createdDate: "Jan 21, 2018"
             }, {
-                name: "Story 10",
+                name: "Campaign 10",
                 count: "17",
                 createdDate: "Jan 21, 2018"
             }, {
-                name: "Story 10",
+                name: "Campaign 10",
                 count: "17",
                 createdDate: "Jan 21, 2018"
             }, {
-                name: "Story 10",
+                name: "Campaign 10",
                 count: "17",
                 createdDate: "Jan 21, 2018"
             }, {
-                name: "Story 10",
+                name: "Campaign 10",
                 count: "17",
                 createdDate: "Jan 21, 2018"
             }]
@@ -148,7 +148,7 @@ export default class VideoListings extends Component {
             <div style={{width: '100%'}}>
              <AppBar className="app-main-header" position="static">
               <Toolbar>
-                  <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Videos</h4>
+                  <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Video Library</h4>
                   <SearchBox value={searchText} onChange={this.onChangeText} styleName="d-none d-sm-block"/>
               </Toolbar>
              </AppBar>
@@ -160,7 +160,7 @@ export default class VideoListings extends Component {
                     <TableHead style={{backgroundColor: 'gray'}}>
                         <TableRow>
                             <TableCell style={{color: 'white', fontSize: 15}}>Campaign Name</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Video Count</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>Total Videos</TableCell>
                             <TableCell style={{color: 'white', fontSize: 15}}>Created Date</TableCell>
                         </TableRow>
                     </TableHead>

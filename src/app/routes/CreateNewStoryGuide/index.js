@@ -52,11 +52,11 @@ export default class CreateNewStory extends Component {
 
     render() {
         return (
-          <div className="container-fluid" style ={{paddingLeft: 0, paddingRight: 0}}>
+          <div className="container-fluid" style ={{paddingLeft: 0, paddingRight: 0, backgroundColor: '#F8F9FA'}}>
             <div style={{width: '100%'}}>
                <AppBar className="app-main-header" position="static">
                    <Toolbar>
-                        <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Create New StoryGuide</h4>
+                        <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Create New Campaign</h4>
                   </Toolbar>
                </AppBar>
             </div>
@@ -94,12 +94,14 @@ export default class CreateNewStory extends Component {
                                     }
                                   }}
                                   disabled={this.state.toDos.length == 3}
-                                  style={{float: 'right', marginBottom: 20}}>AddMore</Button>
-                             <Button style={{color: 'white', marginLeft: 40, 
-                                     marginBottom: 10,
-                                     width: 'calc(100% - 80px)', 
+                                  style={{float: 'right'}}>AddMore</Button>
+                         <div className="container-fluid" style={{height: 50, display: 'flex',
+                              flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                              <Button style={{color: 'white', 
+                                     width: '30%',
                                      backgroundColor: '#0000FF'}} 
                                 onClick={() => {this.validateAndPerformApiCall()}}>SUBMIT</Button>
+                         </div>
             </Card>
             </div>
          </div>

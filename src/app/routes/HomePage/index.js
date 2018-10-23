@@ -8,7 +8,7 @@ import './home.css';
 const storyGuides = {
     img: 'https://previews.123rf.com/images/asmati/asmati1706/asmati170606404/80933523-paper-and-pencil-sign-vector-white-icon-with-soft-shadow-on-transparent-background-.jpg',
     title: '80',
-    subTitle: 'Stories',
+    subTitle: 'Campaigns',
 };
 const emailInvites = {
     img: 'http://www.clker.com/cliparts/d/7/8/7/1380099934958570638mail-symbol-grey-md-hi.png',

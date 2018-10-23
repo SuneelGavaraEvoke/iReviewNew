@@ -66,7 +66,7 @@ export default class EmailInvites extends Component {
     render() {
         const {data, page, rowsPerPage, searchText} = this.state;
         return (
-            <div class="container-fluid paddingZero">
+            <div class="container-fluid paddingZero" style={{backgroundColor: '#F8F9FA'}}>
                 <div style={{width: '100%'}}>
                    <AppBar className="app-main-header" position="static">
                        <Toolbar>
@@ -80,10 +80,10 @@ export default class EmailInvites extends Component {
                       <Table style={{width: '100%'}}>
                           <TableHead>
                               <TableRow style={{backgroundColor: 'gray'}}>
-                                  <TableCell style={{color: 'white', fontSize: 15}}>Compaign Name</TableCell>
+                                  <TableCell style={{color: 'white', fontSize: 15}}>Campaign Name</TableCell>
                                   <TableCell style={{color: 'white', fontSize: 15}}>Date</TableCell>
-                                  <TableCell style={{color: 'white', fontSize: 15}}>Invites Count</TableCell>
-                                  <TableCell style={{color: 'white', fontSize: 15}}>Responded Count</TableCell>
+                                  <TableCell style={{color: 'white', fontSize: 15}}>Total Invites</TableCell>
+                                  <TableCell style={{color: 'white', fontSize: 15}}>Total Responses</TableCell>
                               </TableRow>
                           </TableHead>
                           <TableBody> {
