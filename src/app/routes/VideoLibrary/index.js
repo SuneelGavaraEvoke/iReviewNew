@@ -133,11 +133,11 @@ export default class VideoLibrary extends Component {
                 <Table style={{width: '100%'}}>
                     <TableHead style={{backgroundColor: 'gray'}}>
                         <TableRow>
-                            <TableCell style={{color: 'white', fontSize: 15}}>VideoThumbnail</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>User</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>Video</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>User Name</TableCell>
                             <TableCell style={{color: 'white', fontSize: 15}}>Status</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Recorded</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Invited</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>Responsnded Count</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>Invited Count</TableCell>
                             <TableCell style={{color: 'white', fontSize: 15}}>Actions</TableCell>
                         </TableRow>
                     </TableHead>
@@ -145,7 +145,9 @@ export default class VideoLibrary extends Component {
                         data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((value, index) => {
                             return (
-                                <TableRow selected={true} style={{backgroundColor: index % 2 == 0 ? '#FAFAFA' : 'white'}}>
+                                <TableRow selected={true} 
+                                 onClick={() => {this.props.history.push('./videoPlayerDetail')}}
+                                 style={{backgroundColor: index % 2 == 0 ? '#FAFAFA' : 'white'}}>
                                     <TableCell>
                                         <img style={{maxWidth: 100, maxHeight: 100, marginTop: 5, marginBottom: 5}} src={value.videoThumbnail}/>
                                     </TableCell>

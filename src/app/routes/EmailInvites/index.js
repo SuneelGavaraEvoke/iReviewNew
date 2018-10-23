@@ -22,37 +22,37 @@ export default class EmailInvites extends Component {
             rowsPerPage: 5,
             data: [
                 {
-                    "storyname": "Story 1",
+                    "storyname": "Campaign 1",
                     "date": "Jan 1, 2018",
                     "invites": "1",
                     "responsed": "0"
                 },
                 {
-                    "storyname": "Story 2",
+                    "storyname": "Campaign 2",
                     "date": "Feb 2, 2018",
                     "invites": "2",
                     "responsed": "1"
                  }, 
                  {
-                    "storyname": "Story 3",
+                    "storyname": "Campaign 3",
                     "date": "Mar 3. 2018",
                     "invites": "3",
                     "responsed": "2"
                  }, 
                  {
-                    "storyname": "Story 4",
+                    "storyname": "Campaign 4",
                     "date": "Apr 4, 2018",
                     "invites": "4",
                     "responsed": "3"
                  }, 
                  {
-                    "storyname": "Story 5",
+                    "storyname": "Campaign 5",
                     "date": "May 5, 2018",
                     "invites": "5",
                     "responsed": "5"
                  },
                  {
-                    "storyname": "Story 6",
+                    "storyname": "Campaign 6",
                     "date": "June 6, 2019",
                     "invites": "6",
                     "responsed": "6"
@@ -80,10 +80,10 @@ export default class EmailInvites extends Component {
                       <Table style={{width: '100%'}}>
                           <TableHead>
                               <TableRow style={{backgroundColor: 'gray'}}>
-                                  <TableCell style={{color: 'white', fontSize: 15}}>StoryName</TableCell>
+                                  <TableCell style={{color: 'white', fontSize: 15}}>Compaign Name</TableCell>
                                   <TableCell style={{color: 'white', fontSize: 15}}>Date</TableCell>
-                                  <TableCell style={{color: 'white', fontSize: 15}}>Invites</TableCell>
-                                  <TableCell style={{color: 'white', fontSize: 15}}>Responded</TableCell>
+                                  <TableCell style={{color: 'white', fontSize: 15}}>Invites Count</TableCell>
+                                  <TableCell style={{color: 'white', fontSize: 15}}>Responded Count</TableCell>
                               </TableRow>
                           </TableHead>
                           <TableBody> {

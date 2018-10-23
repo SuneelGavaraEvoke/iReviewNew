@@ -42,17 +42,17 @@ const columns = [
 ]
 const products = [
     {
-        "storyname": "Story 1",
+        "storyname": "Campaign 1",
         "count": "50",
         "createdDate": "Jan 01, 2018"
     },
     {
-        "storyname": "Story 2",
+        "storyname": "Campaign 2",
         "count": "60",
         "createdDate": "Jan 02, 2018"
      }, 
      {
-        "storyname": "Story 3",
+        "storyname": "Campaign 3",
         "count": "70",
         "createdDate": "Jan 03, 2018"
      },       
@@ -153,14 +153,14 @@ export default class VideoListings extends Component {
               </Toolbar>
              </AppBar>
             </div>
-            <div className="row mt-4 mx-2">
+            <div className="row mx-2">
               <div className="col-xs-12 col-sm-12 col-md-12">
               <Paper style={{width: '100%', display: 'flex', marginTop: 20, overflow: 'auto'}}>
                 <Table>
                     <TableHead style={{backgroundColor: 'gray'}}>
                         <TableRow>
-                            <TableCell style={{color: 'white', fontSize: 15}}>StoryName</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Count</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>Campaign Name</TableCell>
+                            <TableCell style={{color: 'white', fontSize: 15}}>Video Count</TableCell>
                             <TableCell style={{color: 'white', fontSize: 15}}>Created Date</TableCell>
                         </TableRow>
                     </TableHead>

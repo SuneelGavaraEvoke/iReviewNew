@@ -23,32 +23,32 @@ export default class StoryGuides extends Component {
             rowsPerPage: 5,
             data : [
                 {
-                    "storyname": "Story 1",
+                    "storyname": "Campaign 1",
                     "date": "Jan 1, 2018",
                     "invites": "1"
                 },
                 {
-                    "storyname": "Story 2",
+                    "storyname": "Campaign 2",
                     "date": "Feb 2, 2018",
                     "invites": "2"
                  }, 
                  {
-                    "storyname": "Story 3",
+                    "storyname": "Campaign 3",
                     "date": "Mar 3. 2018",
                     "invites": "3"
                  }, 
                  {
-                    "storyname": "Story 4",
+                    "storyname": "Campaign 4",
                     "date": "Apr 4, 2018",
                     "invites": "4"
                  }, 
                  {
-                    "storyname": "Story 4",
+                    "storyname": "Campaign 4",
                     "date": "May 5, 2018",
                     "invites": "4"
                  },
                  {
-                    "storyname": "Story 4",
+                    "storyname": "Campaign 4",
                     "date": "June 6, 2019",
                     "invites": "4"
                  }
@@ -72,11 +72,11 @@ export default class StoryGuides extends Component {
             <div style={{width: '100%'}}>
                <AppBar className="app-main-header" position="static">
                    <Toolbar>
-                        <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>StoryGuides</h4>
+                        <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Campaign Name</h4>
                         <SearchBox onChange={this.onChangeText} value={searchText} styleName="d-none d-sm-block"/>
                         <Button style={{color: 'white', marginLeft: 10}}
                         onClick={() => {this.props.history.push('./create-new-story')}}
-                        >Create New StoryGuide</Button>
+                        >Create New Campaign</Button>
                   </Toolbar>
                </AppBar>
             </div>
@@ -87,9 +87,9 @@ export default class StoryGuides extends Component {
                    <Table>
                        <TableHead>
                            <TableRow style={{backgroundColor: 'gray'}}>
-                               <TableCell style={{color: 'white', fontSize: 15}}>StoryName</TableCell>
-                               <TableCell style={{color: 'white', fontSize: 15}}>CreatedDate</TableCell>
-                               <TableCell style={{color: 'white', fontSize: 15}}>Invites</TableCell>
+                               <TableCell style={{color: 'white', fontSize: 15}}>Compaign</TableCell>
+                               <TableCell style={{color: 'white', fontSize: 15}}>Created Date</TableCell>
+                               <TableCell style={{color: 'white', fontSize: 15}}>Invites Count</TableCell>
                            </TableRow>
                        </TableHead>
                        <TableBody>{

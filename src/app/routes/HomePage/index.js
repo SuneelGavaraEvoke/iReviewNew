@@ -71,7 +71,7 @@ export default class HomePage extends Component {
               <div className="rootHeader">
               <AppBar className="app-main-header" position="static">
                 <Toolbar>
-                    <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>DashBoard</h4>
+                    <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Dashboard</h4>
                 </Toolbar>
             </AppBar>
               </div>
@@ -94,7 +94,7 @@ export default class HomePage extends Component {
                </div>
                <div class="row mx-2">
                <div className="page-heading d-sm-flex justify-content-sm-between align-items-sm-center" style={{width: '100%', marginBottom: 10}}>
-                  <h2 className="title mb-3 mb-sm-0">Videos</h2>
+                  <h2 className="title mb-3 mb-sm-0">Recent Videos</h2>
                   </div>
                 <div className="col-xs-12 col-sm-12 d-inline" style={{padding: 0}}>
                      <Card>
