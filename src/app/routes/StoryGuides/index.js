@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Table from '@material-ui/core/Table';
 import TableCell from '@material-ui/core/TableCell';
+import Button from '@material-ui/core/Button';
 import TableRow from '@material-ui/core/TableRow';
 import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,7 +11,6 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import './stories.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button'
 import SearchBox from '../../../components/SearchBox';
 
 export default class StoryGuides extends Component {
@@ -90,6 +90,7 @@ export default class StoryGuides extends Component {
                                <TableCell style={{color: 'white', fontSize: 15}}>Campaign Name</TableCell>
                                <TableCell style={{color: 'white', fontSize: 15}}>Created Date</TableCell>
                                <TableCell style={{color: 'white', fontSize: 15}}>Total Invites</TableCell>
+                               <TableCell/>
                            </TableRow>
                        </TableHead>
                        <TableBody>{
@@ -100,6 +101,9 @@ export default class StoryGuides extends Component {
                                 <TableCell>{value.storyname}</TableCell>
                                         <TableCell>{value.date}</TableCell>
                                         <TableCell>{value.invites}</TableCell>
+                                        <TableCell>
+                                              <Button style={{backgroundColor: 'green', color: 'white', fontSize: 10}} onClick={() => {}}>Duplicate</Button>
+                                          </TableCell>
                                    </TableRow>
                                )
                            })

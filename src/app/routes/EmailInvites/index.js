@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import SearchBox from '../../../components/SearchBox';
@@ -84,6 +85,7 @@ export default class EmailInvites extends Component {
                                   <TableCell style={{color: 'white', fontSize: 15}}>Date</TableCell>
                                   <TableCell style={{color: 'white', fontSize: 15}}>Total Invites</TableCell>
                                   <TableCell style={{color: 'white', fontSize: 15}}>Total Responses</TableCell>
+                                  <TableCell/>
                               </TableRow>
                           </TableHead>
                           <TableBody> {
@@ -95,6 +97,9 @@ export default class EmailInvites extends Component {
                                           <TableCell>{value.date}</TableCell>
                                           <TableCell>{value.invites}</TableCell>
                                           <TableCell>{value.responsed}</TableCell>
+                                          <TableCell>
+                                              <Button style={{backgroundColor: 'green', color: 'white', fontSize: 10}} onClick={() => {}}>Invite</Button>
+                                          </TableCell>
                                       </TableRow>
                                   )
                               })

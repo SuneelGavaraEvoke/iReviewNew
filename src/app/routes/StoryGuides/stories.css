@@ -6,6 +6,9 @@ html, body, .full-height {
 .height-90 {
     height: calc(100% - 300px);
 }
+.app-main-container {
+    background-color: #F8F9FA;
+}
 .bgColorCol1 {
 background-color: red;
 }

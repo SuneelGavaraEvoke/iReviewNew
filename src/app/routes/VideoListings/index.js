@@ -12,51 +12,8 @@ import Paper from '@material-ui/core/Paper';
 import SearchBox from '../../../components/SearchBox';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import './VideoListings.css';
+import {VideoLibrary} from '../../Utility/Data';
 
-const columns = [
-    {
-        dataField: 'storyname',
-        text: 'Name',
-        headerAlign: 'center', 
-        headerStyle: {
-            overflow: 'scroll'
-        }
-    },
-    {
-        dataField: 'count',
-        text: 'Videos Count',
-        headerAlign: 'center', 
-        headerStyle: {
-            overflow: 'scroll'
-        }
-    }, 
-    {
-        dataField: 'createdDate',
-        text: 'Videos Count',
-        headerAlign: 'center', 
-        headerStyle: {
-            overflow: 'scroll'
-        }
-    }, 
-
-]
-const products = [
-    {
-        "storyname": "Campaign 1",
-        "count": "50",
-        "createdDate": "Jan 01, 2018"
-    },
-    {
-        "storyname": "Campaign 2",
-        "count": "60",
-        "createdDate": "Jan 02, 2018"
-     }, 
-     {
-        "storyname": "Campaign 3",
-        "count": "70",
-        "createdDate": "Jan 03, 2018"
-     },       
-]
 export default class VideoListings extends Component {
 
 
@@ -66,67 +23,7 @@ export default class VideoListings extends Component {
             searchText: "",
             page: 0,
             rowsPerPage: 5,
-            data: [{
-                name: "Campaign 1",
-                count: "10",
-                createdDate: "Jan 12, 2018"
-            }, {
-                name: "Campaign 2",
-                count: "11",
-                createdDate: "Jan 13, 2018"
-            }, {
-                name: "Campaign 3",
-                count: "12",
-                createdDate: "Jan 14, 2018"
-            }, {
-                name: "Campaign 4",
-                count: "13",
-                createdDate: "Jan 15, 2018"
-            }, {
-                name: "Campaign 5",
-                count: "14",
-                createdDate: "Jan 16, 2018"
-            }, {
-                name: "Campaign 6",
-                count: "15",
-                createdDate: "Jan 17, 2018"
-            }, {
-                name: "Campaign 7",
-                count: "16",
-                createdDate: "Jan 18, 2018"
-            }, {
-                name: "Campaign 8",
-                count: "17",
-                createdDate: "Jan 19, 2018"
-            }, {
-                name: "Campaign 9",
-                count: "17",
-                createdDate: "Jan 20, 2018"
-            }, {
-                name: "Campaign 10",
-                count: "17",
-                createdDate: "Jan 21, 2018"
-            }, {
-                name: "Campaign 10",
-                count: "17",
-                createdDate: "Jan 21, 2018"
-            }, {
-                name: "Campaign 10",
-                count: "17",
-                createdDate: "Jan 21, 2018"
-            }, {
-                name: "Campaign 10",
-                count: "17",
-                createdDate: "Jan 21, 2018"
-            }, {
-                name: "Campaign 10",
-                count: "17",
-                createdDate: "Jan 21, 2018"
-            }, {
-                name: "Campaign 10",
-                count: "17",
-                createdDate: "Jan 21, 2018"
-            }]
+            headers: ["Campaign Name", "Total Videos", "Created Date"]
         }
     }
     handleOnClick = () => {
@@ -141,11 +38,11 @@ export default class VideoListings extends Component {
     onChangeText = (event) => {
         this.setState({searchText: event.target.value})
     }
-      render() {
-         const {page, rowsPerPage, data, searchText} = this.state;
+    render() {
+        const {page, rowsPerPage,headers, searchText} = this.state;
         return (
             <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
-            <div style={{width: '100%'}}>
+            <div style={styles.totalWidth}>
              <AppBar className="app-main-header" position="static">
               <Toolbar>
                   <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Video Library</h4>
@@ -155,17 +52,16 @@ export default class VideoListings extends Component {
             </div>
             <div className="row mx-2">
               <div className="col-xs-12 col-sm-12 col-md-12">
-              <Paper style={{width: '100%', display: 'flex', marginTop: 20, overflow: 'auto'}}>
+              <Paper style={styles.paper}>
                 <Table>
-                    <TableHead style={{backgroundColor: 'gray'}}>
-                        <TableRow>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Campaign Name</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Total Videos</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Created Date</TableCell>
+                    <TableHead style={styles.tableHead}>
+                        <TableRow> {
+                            headers.map(value => <TableCell style={styles.tableCell}>{value}</TableCell>)
+                        }
                         </TableRow>
                     </TableHead>
                     <TableBody> {
-                        data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        VideoLibrary.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((value, index) => {
                             return (
                                 <TableRow style={{backgroundColor: index % 2 == 0 ? '#FAFAFA' : 'white'}} onClick={this.handleOnClick}>
@@ -186,7 +82,7 @@ export default class VideoListings extends Component {
                         'aria-label': 'Next Page',
                     }}                    
                     component="div"
-                    count={data.length}
+                    count={VideoLibrary.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onChangePage={this.handleChangePage}
@@ -198,5 +94,23 @@ export default class VideoListings extends Component {
             </div>
             </div>
         )
+    }
+}
+const styles = {
+    totalWidth: {
+        width: '100%'
+    },
+    paper: {
+        width: '100%', 
+        display: 'flex', 
+        marginTop: 20, 
+        overflow: 'auto'
+    },
+    tableHead: {
+        backgroundColor: 'gray'
+    },
+    tableCell:{
+        color: 'white', 
+        fontSize: 15
     }
 }

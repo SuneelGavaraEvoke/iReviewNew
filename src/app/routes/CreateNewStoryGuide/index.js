@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import ToDoList from '../../../components/todo/ToDoList';
 import {arrayMove} from 'react-sortable-hoc';
+import {Alert} from 'reactstrap';
+
 import './createnewstory.css';
 
 export default class CreateNewStory extends Component {
@@ -16,7 +18,9 @@ export default class CreateNewStory extends Component {
             toDos: [""],
             Question1: "",
             name: "",
-            description: ""
+            description: "",
+            errorText: "",
+            isShowError: false
         }
     }
     onSortEnd = ({oldIndex, newIndex}) => {
@@ -47,12 +51,13 @@ export default class CreateNewStory extends Component {
                 break;
             }
         }
-        error != "" ? window.alert(error) : window.alert('Thank you for Sumbitting')
+        error != "" ? this.setState({isShowError: true, errorText: error}) : window.alert('Thank you for Sumbitting')
     }
 
     render() {
+        const {errorText, isShowError} = this.state;
         return (
-          <div className="container-fluid" style ={{paddingLeft: 0, paddingRight: 0, backgroundColor: '#F8F9FA'}}>
+          <div className="container-fluid" style ={{paddingLeft: 0, paddingRight: 0, backgroundColor: '#F8F9FA', minHeight: '100%'}}>
             <div style={{width: '100%'}}>
                <AppBar className="app-main-header" position="static">
                    <Toolbar>
@@ -60,22 +65,45 @@ export default class CreateNewStory extends Component {
                   </Toolbar>
                </AppBar>
             </div>
-            <div className="container-fluid" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-            <Card style={{marginTop: 20, width: '70%'}}>
+            <Alert color="danger" isOpen={isShowError} toggle={(isOpen) => {
+              this.setState({errorText: "", isShowError: false})
+            }} className="bg-secondary text-white shadow-lg">{errorText}</Alert>
+            <div className="container-fluid" style={{display: 'flex', flexDirection: 'column', justifyContent: 'center',alignItems: 'center'}}>
+            <Card className="responsiveWidth" style={{marginTop: 20}}>
+            <h3 style={{marginLeft: 10, marginTop: 10}}>Campaign Details</h3>
                         <TextField fullWidth 
-                                   style={{width: 'calc(100% - 20px)', marginLeft: 10}}
+                                   style={{width: 'calc(100% - 20px)', marginLeft: 10, marginTop: 10}}
                                    value={this.state.name} 
                                    onChange={(event) => {this.setState({name: event.target.value})}}
                                    label="Name"
                                    margin="normal"/>
                          <TextField 
                                    multiline rowsMax="4" 
-                                   style={{marginLeft: 10, width: 'calc(100% - 20px)'}}
+                                   style={{marginLeft: 10,marginBottom: 30, width: 'calc(100% - 20px)'}}
                                    value={this.state.description}
                                    onChange={(event) => {this.setState({description: event.target.value})}}
                                    label="Description"
                                    margin="normal"/>
-                         <ToDoList
+                </Card>
+                <Card className="responsiveWidth" style={{marginTop: 20, padding: 10}}>
+                      <div className="row mt-2">
+                          <div className="col-sm-6 col-xs-12">
+                              <h3 className="float-left">Campaign Cues</h3>
+                          </div>
+                          <div className="col-sm-6 col-xs-12">
+                          <Button 
+                                onClick={() => {
+                                    if (this.state.toDos.length < 3) {
+                                         let {toDos} = this.state;
+                                         toDos.push("");
+                                         this.setState({toDos: toDos})
+                                    }
+                                  }}
+                                  disabled={this.state.toDos.length == 3}
+                                  style={{float: 'right', marginBottom: 10, color: this.state.toDos.length == 3 ? 'gray' : '#3f51b5'}}>+AddMore</Button>
+                          </div>
+                      </div>
+                      <ToDoList
                                style={{height: this.state.toDos.length * 75}}
                                textChanged={(text, index) => {
                                         let arrayValue = this.state.toDos;
@@ -85,24 +113,14 @@ export default class CreateNewStory extends Component {
                                 onSortEnd={this.onSortEnd}
                                 useDragHandle={true}
                                 toDos={this.state.toDos}/>
-                         <Button 
-                                onClick={() => {
-                                    if (this.state.toDos.length < 3) {
-                                         let {toDos} = this.state;
-                                         toDos.push("");
-                                         this.setState({toDos: toDos})
-                                    }
-                                  }}
-                                  disabled={this.state.toDos.length == 3}
-                                  style={{float: 'right'}}>AddMore</Button>
-                         <div className="container-fluid" style={{height: 50, display: 'flex',
-                              flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                </Card>
+                <div className="responsiveWidth" style={{height: 50, display: 'flex',
+                              flexDirection: 'row', justifyContent: 'flex-end', marginTop: 20, alignItems: 'center'}}>
                               <Button style={{color: 'white', 
                                      width: '30%',
-                                     backgroundColor: '#0000FF'}} 
+                                     backgroundColor: '#3f51b5'}} 
                                 onClick={() => {this.validateAndPerformApiCall()}}>SUBMIT</Button>
-                         </div>
-            </Card>
+                </div>
             </div>
          </div>
         )

@@ -34,7 +34,7 @@ export default class Brands extends Component {
     render() {
         const {imagePath} = this.state;
         return (
-            <div class="container-fluid removePadding" style={{backgroundColor: '#F8F9FA'}}>
+            <div class="container-fluid removePadding" style={{backgroundColor: '#F8F9FA', height: '100%'}}>
             <div style={{width: '100%'}}>
              <AppBar className="app-main-header" position="static">
               <Toolbar>

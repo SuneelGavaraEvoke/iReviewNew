@@ -135,7 +135,8 @@ export default class VideoLibrary extends Component {
                   </div>
                 </div>
                 <Paper className="mx-4" style={{display: 'flex', marginTop: 20, overflow: 'auto'}}>
-                <Table style={{width: '100%'}}>
+                <Table 
+                style={{width: '100%'}}>
                     <TableHead style={{backgroundColor: 'gray'}}>
                         <TableRow>
                             <TableCell style={{color: 'white', fontSize: 15}}>Video</TableCell>
@@ -150,10 +151,14 @@ export default class VideoLibrary extends Component {
                         data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((value, index) => {
                             return (
-                                <TableRow selected={true} 
-                                 onClick={() => {this.props.history.push('./videoPlayerDetail')}}
+                                <TableRow onClick={(event) => {
+                                    const {cellIndex} = event.target;
+                                    if (cellIndex != 5 && cellIndex != undefined) {
+                                        this.props.history.push('./videoPlayerDetail')
+                                    }
+                                }} selected={true} 
                                  style={{backgroundColor: index % 2 == 0 ? '#FAFAFA' : 'white'}}>
-                                    <TableCell textA>
+                                    <TableCell onClick={this.onTableClick}>
                                         <img style={{maxWidth: 100, maxHeight: 100, marginTop: 5, marginBottom: 5}} src={value.videoThumbnail}/>
                                     </TableCell>
                                     <TableCell>{value.user}</TableCell>
@@ -162,7 +167,6 @@ export default class VideoLibrary extends Component {
                                     <TableCell>{value.invited}</TableCell>
                                     <TableCell>
                                         <Button style={{background: 'green', color: 'white'}} onClick={() => {
-                                            debugger;
                                             window.alert('downLoadAction performed');
                                         }}>{value.actions}</Button>
                                     </TableCell>

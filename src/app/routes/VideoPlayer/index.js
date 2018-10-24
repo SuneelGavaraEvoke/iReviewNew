@@ -5,9 +5,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Play from '../../../assets/images/Play.png';
 import Popup from 'reactjs-popup';
+import {VideoClips} from '../../Utility/Data';
 
 import './videoplayer.css';
-export default class VideoPlayerDetail extends Component {
+
+class VideoPlayerDetail extends Component {
 
     constructor(props) {
         super(props);
@@ -17,21 +19,12 @@ export default class VideoPlayerDetail extends Component {
             shouldMainViewPlay: false,
             tappedIndexBottom: 0
         }
-        this.clips = this.getClips()
-
-    }
-    getClips = () => {
-        return (
-            [{"name": "First Clip", "url": "http://techslides.com/demos/sample-videos/small.mp4"},
-            {"name": "Second Clip",  "url": "https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_2mb.mp4"},
-            {"name": "Third Clip",  "url": "http://techslides.com/demos/sample-videos/small.mp4"}]
-        )
     }
     getInnerComponents = () => {
 
         let arrayToBeReturned = [];
 
-        this.clips.forEach((item, index) => {
+        VideoClips.forEach((item, index) => {
             arrayToBeReturned.push(
                 <div className="eachRow col-sm-12 col-md-12" onClick={() => {
                     this.setState({isPopUpOpened: true, shouldMainViewPlay: false, tappedIndexBottom: index});
@@ -45,42 +38,37 @@ export default class VideoPlayerDetail extends Component {
     }
     videoAdded = () => {
         const {currentIndex} = this.state;
-        if (currentIndex < this.clips.length - 1) {
+        if (currentIndex < VideoClips.length - 1) {
            const updatedIndex = currentIndex + 1;
            this.setState({currentIndex: updatedIndex, shouldMainViewPlay: true})
         }
     }
     getCurrentSelectedVideo = () => {
         const {currentIndex} = this.state
-        const {url} = this.clips[currentIndex];
+        const {url} = VideoClips[currentIndex];
         return url
     }
     render() {
         const {isPopUpOpened, shouldMainViewPlay, tappedIndexBottom} = this.state;
         return(
-            <body>
-            <div class="mainContainer">
-            <div style={{width: '100%'}}>
+            <div>
             <AppBar className="app-main-header" position="static">
                 <Toolbar>
                         <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Video Name</h4>
                   </Toolbar>
                </AppBar>
-            </div>
                <Popup open={isPopUpOpened} closeOnDocumentClick onClose={() => {this.setState({isPopUpOpened: false})}}>
-                   <div style={{flex: 1, height: window.screen.height * 0.5, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center'}}>
-                         <ReactPlayer width="100%" height="60%" 
-                         playing
-                         controls={true}
-                         url={this.clips[tappedIndexBottom].url}/>
-                         <div style={{height: '10%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <p style={{textAlign: 'center', fontSize: 15}}>i Like Clopay because</p>
+                   <div style={styles.popUpMain}>
+                         <ReactPlayer width="100%" height="60%"  playing controls={true}
+                         url={VideoClips[tappedIndexBottom].url}/>
+                         <div style={{width: '100%'}}>
+                            <h2 className="text-center ">i Like Clopay because</h2>
                          </div>
-                         <div style={{width: '100%', height: '20%',display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-                             <Button download href={this.getCurrentSelectedVideo()} style={{height: '50%', alignSelf: 'center'}} fullWidth={false} className="jr-btn bg-dark text-white">
+                         <div style={styles.downLoadView}>
+                             <Button download href={this.getCurrentSelectedVideo()} style={styles.downLoadButton} fullWidth={false} className="jr-btn bg-dark text-white">
                              <i className="zmdi zmdi-download"/><span> DOWNLOAD</span></Button>
                          </div>
-                         <div style={{width: '100%', height: '10%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                         <div style={styles.backButtonView}>
                                <Button onClick={() => {this.setState({isPopUpOpened: false})}} fullWidth={false}><p style={{color: '77B9E6'}}>Back</p></Button>
                          </div>
                    </div>
@@ -100,7 +88,7 @@ export default class VideoPlayerDetail extends Component {
                             <h2>StoryGuide Name</h2>
                             <p>By SuneelKumar</p>
                             <p>sunilkumargavara@gmail.com</p>
-                            <h3 onClick={() => {this.props.history.goBack();}}>Back To Gallery</h3>
+                            <Button variant="contained" color="primary">Back To Gallery</Button>
                     </div>
                     <div className="col-xs-12 col-sm-6 col-md-4">
                             <div class="mb-2">
@@ -122,9 +110,38 @@ export default class VideoPlayerDetail extends Component {
                   <div className="row col-xs-12 com-sm-12 col-md-12"> {this.getInnerComponents()}
                   </div>
                </div>
-            </div>
-           </body>
+        </div>
         )
     }
 
+}
+export default VideoPlayerDetail;
+
+const styles = {
+    popUpMain: {
+        flex: 1, 
+        height: window.screen.height * 0.5, 
+        flexDirection: 'column', 
+        justifyContent: 'flex-start', 
+        alignItems: 'center'
+    },
+    downLoadView: {
+        width: '100%', 
+        height: '20%',
+        display: 'flex', 
+        flexDirection: 'row', 
+        justifyContent: 'center'
+    },
+    downLoadButton: {
+        height: '50%', 
+        alignSelf: 'center'
+    },
+    backButtonView: {
+        width: '100%', 
+        height: '10%', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'center', 
+        alignItems: 'center'
+    }
 }

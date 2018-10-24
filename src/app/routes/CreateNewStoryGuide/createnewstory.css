@@ -2,3 +2,11 @@
     margin-left: 10px;
     width: calc(100% - 20px)
 }
+.responsiveWidth {
+    width: 70%;
+}
+@media only screen and (max-width: 768px) {
+    .responsiveWidth {
+        width: 90%;
+    }
+} 
