@@ -12,6 +12,7 @@ import './stories.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import SearchBox from '../../../components/SearchBox';
+import {Campaign} from '../../Utility/Data';
 
 export default class StoryGuides extends Component {
 
@@ -21,38 +22,7 @@ export default class StoryGuides extends Component {
             searchText: "",
             page: 0,
             rowsPerPage: 5,
-            data : [
-                {
-                    "storyname": "Campaign 1",
-                    "date": "Jan 1, 2018",
-                    "invites": "1"
-                },
-                {
-                    "storyname": "Campaign 2",
-                    "date": "Feb 2, 2018",
-                    "invites": "2"
-                 }, 
-                 {
-                    "storyname": "Campaign 3",
-                    "date": "Mar 3. 2018",
-                    "invites": "3"
-                 }, 
-                 {
-                    "storyname": "Campaign 4",
-                    "date": "Apr 4, 2018",
-                    "invites": "4"
-                 }, 
-                 {
-                    "storyname": "Campaign 4",
-                    "date": "May 5, 2018",
-                    "invites": "4"
-                 },
-                 {
-                    "storyname": "Campaign 4",
-                    "date": "June 6, 2019",
-                    "invites": "4"
-                 }
-            ]
+            headers : ["Campaign Name", "Created Date", "Total Invites"]
         }
     }
 
@@ -66,10 +36,9 @@ export default class StoryGuides extends Component {
         this.setState({searchText: event.target.value})
     }
     render() {
-        const {data, page, rowsPerPage, searchText} = this.state;
+        const {page, rowsPerPage, searchText, headers} = this.state;
         return (
-            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0, backgroundColor: '#F8F9FA'}}>
-            <div style={{width: '100%'}}>
+            <div class="container-fluid p-0" style={styles.mainView}>
                <AppBar className="app-main-header" position="static">
                    <Toolbar>
                         <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Campaign</h4>
@@ -79,22 +48,19 @@ export default class StoryGuides extends Component {
                         >Create New Campaign</Button>
                   </Toolbar>
                </AppBar>
-            </div>
                <div className="row mx-2">
                <div className="col-xs-12 col-sm-12 col-md-12">
-
-              <Paper style={{width: '100%', display: 'flex', marginTop: 20, overflow: 'auto'}}>
+              <Paper style={styles.paperStyle}>
                    <Table>
                        <TableHead>
-                           <TableRow style={{backgroundColor: 'gray'}}>
-                               <TableCell style={{color: 'white', fontSize: 15}}>Campaign Name</TableCell>
-                               <TableCell style={{color: 'white', fontSize: 15}}>Created Date</TableCell>
-                               <TableCell style={{color: 'white', fontSize: 15}}>Total Invites</TableCell>
+                           <TableRow style={styles.bgGray}> {
+                               headers.map(value => <TableCell style={styles.tableHeaderCellStyle}>{value}</TableCell>)
+                               }
                                <TableCell/>
                            </TableRow>
                        </TableHead>
                        <TableBody>{
-                           data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                           Campaign.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                            .map((value, index) => {
                                return (
                                 <TableRow style={{backgroundColor: index % 2 == 0 ? '#FAFAFA' : 'white'}}>
@@ -102,7 +68,7 @@ export default class StoryGuides extends Component {
                                         <TableCell>{value.date}</TableCell>
                                         <TableCell>{value.invites}</TableCell>
                                         <TableCell>
-                                              <Button style={{backgroundColor: 'green', color: 'white', fontSize: 10}} onClick={() => {}}>Duplicate</Button>
+                                              <Button style={styles.DuplicateButton} onClick={() => {}}>Duplicate</Button>
                                           </TableCell>
                                    </TableRow>
                                )
@@ -118,7 +84,7 @@ export default class StoryGuides extends Component {
                             'aria-label': 'Next Page',
                         }}                    
                         component="div"
-                        count={data.length}
+                        count={Campaign.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         onChangePage={this.handlePageChange}
@@ -132,7 +98,29 @@ export default class StoryGuides extends Component {
         )
     }
 }
-
+const styles = {
+    mainView: {
+        backgroundColor: '#F8F9FA'
+    },
+    paperStyle: {
+        width: '100%', 
+        display: 'flex', 
+        marginTop: 20, 
+        overflow: 'auto'
+    },
+    tableHeaderCellStyle: {
+        color: 'white', 
+        fontSize: 15
+    },
+    bgGray: {
+        backgroundColor: 'gray'
+    },
+    DuplicateButton: {
+        backgroundColor: '#3f51b5', 
+        color: 'white', 
+        fontSize: 10
+    }
+}
 
 
 

@@ -13,6 +13,7 @@ import '../VideoLibrary/style.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import SearchBox from '../../../components/SearchBox';
+import {VideoIndex} from '../../Utility/Data';
 
 export default class VideoLibrary extends Component {
 
@@ -24,48 +25,7 @@ export default class VideoLibrary extends Component {
             rowsPerPage: 5,
             recordedVideos: 20,
             sentVideos: 30,
-            data: [
-                {
-                    "videoThumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHDrFJDkWfS-Eaz69yEuCAW-5VIAecZPGJ94UN4QmW9Unp09dQ",
-                    "user": "Doe",
-                    "status": "Sent",
-                    "recorder": "Feb 4, 2018",
-                    "invited": "March 15, 2018",
-                    "actions": "Download"
-                },
-                {
-                    "videoThumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSreWw-6C_CkyFfcQ6sTAS31UryRrEyGnt0BJ2jFto7JsJh_No4dA",
-                    "user": "John",
-                    "status": "Pending",
-                    "recorder": "Jan 12, 2018",
-                    "invited": "Feb 13, 2018",
-                    "actions": "Download"
-                },
-                {
-                    "videoThumbnail": "https://trueconf.com/blog/wp-content/uploads-com/2014/05/Videocall-Android-1.png",
-                    "user": "Keron",
-                    "status": "Pending",
-                    "recorder": "Jan 10, 2018",
-                    "invited": "May 25, 2018",
-                    "actions": "Download"
-                },
-                {
-                    "videoThumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSH7BMiRBZxJubY7uUBg6vpzDkC0hHghh4fRNfV5Pzndh5Fvmhdw",
-                    "user": "Manish",
-                    "status": "sent",
-                    "recorder": "Jan 5, 2018",
-                    "invited": "April 15, 2018",
-                    "actions": "Download"
-                },
-                {
-                    "videoThumbnail": "http://www.talkhelper.com/img/high_quality_video_record.png",
-                    "user": "Rajal",
-                    "status": "Pending",
-                    "recorder": "Jan 15, 2018",
-                    "invited": "March 10, 2018",
-                    "actions": "Download"
-                }
-            ]
+            headers: ["Video", "User Name", "Status", "Total Responses", "Total Invites", "Actions"]
         }
     }
     pushToThumbnailView = () => {
@@ -85,35 +45,14 @@ export default class VideoLibrary extends Component {
         const {isShowSentPopover} = this.state;
         this.setState({isShowSentPopover: !isShowSentPopover})
     }
-    getClips = () => {
-        return (
-            [{"name": "First Clip", "url": "http://techslides.com/demos/sample-videos/small.mp4"},
-            {"name": "Second Clip",  "url": "https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_2mb.mp4"},
-            {"name": "Third Clip",  "url": "http://techslides.com/demos/sample-videos/small.mp4"}]
-        )
-    }
     onChange = (event) => {
         this.setState({searchText: event.target.value})
     }
-    onRowSelection = (key) => {
-        debugger;
-        console.log(key);
-        /*
-        if (column != 5) {
-            this.props.history.push('./videoPlayerDetail');
-       }
-*/
-    }
-    getheaderStyles = () => ({
-        color: 'white', 
-        fontSize: 15, 
-        padding: 0
-    })
     render() {
-        const {data, sentVideos, page, rowsPerPage, recordedVideos, searchText} = this.state;
+        const {headers, sentVideos, page, rowsPerPage, recordedVideos, searchText} = this.state;
         return (
-               <div className="container-fluid" style={{padding: 0, backgroundColor: '#F8F9FA'}}>
-                   <AppBar className="app-main-header" position="static">
+               <div className="container-fluid" style={styles.mainView}>
+               <AppBar className="app-main-header" position="static">
                         <Toolbar>
                             <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Campaign Videos</h4>
                             <SearchBox onChange={this.onChange} value={searchText} styleName="d-none d-sm-block"/>
@@ -123,32 +62,28 @@ export default class VideoLibrary extends Component {
                 <Tooltip placement="bottom" target="numberOfVideoRecords" isOpen={this.state.isShowRecordPopOver} toggle={this.toggleRecordHover}>Number Of Users Entered To Record This Video</Tooltip>
                 <Tooltip placement="bottom" target="numberOfSents" isOpen={this.state.isShowSentPopover} toggle={this.toggleSentHover}>Number of users that sent in their video</Tooltip>
                   <div className="col-sm-4">
-                    <h1 style={{fontSize: 25, textAlign: 'left'}}><strong>My Testimonial</strong></h1>
+                    <h1 style={styles.testiMonial}><strong>My Testimonial</strong></h1>
                   </div>
-                  <div id="numberOfVideoRecords" data-toggle="tooltip"  className="col-sm-4 putCenter recordedVideos">
-                       <h1 style={{fontSize: 40}} id="TooltipExample"><strong>{recordedVideos}</strong></h1>
-                       <p style={{color: '#7F7F7F', marginBottom: '0px', textAlign: 'center'}}>Videos</p>
+                  <div style={styles.font40} id="numberOfVideoRecords" data-toggle="tooltip"  className="col-sm-4 putCenter recordedVideos">
+                       <h1 style={styles.font40} id="TooltipExample"><strong>{recordedVideos}</strong></h1>
+                       <p style={styles.videos}>Videos</p>
                   </div>
                   <div id="numberOfSents" className="col-sm-4 putCenter SentVideos">
-                       <h1 style={{fontSize: 40}}><strong>{sentVideos}</strong></h1>
-                       <p style={{color: '#7F7F7F', marginBottom: '0px', textAlign: 'center'}}>Videos</p>
+                       <h1 style={styles.font40}><strong>{sentVideos}</strong></h1>
+                       <p style={styles.videos}>Videos</p>
                   </div>
                 </div>
-                <Paper className="mx-4" style={{display: 'flex', marginTop: 20, overflow: 'auto'}}>
+                <Paper className="mx-4" style={styles.paper}>
                 <Table 
                 style={{width: '100%'}}>
                     <TableHead style={{backgroundColor: 'gray'}}>
-                        <TableRow>
-                            <TableCell style={{color: 'white', fontSize: 15}}>Video</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15, padding: 0}}>User Name</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15, padding: 0}}>Status</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15, padding: 0}}>Total Responses</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15, padding: 0}}>Total Invites</TableCell>
-                            <TableCell style={{color: 'white', fontSize: 15, padding: 0}}>Actions</TableCell>
+                        <TableRow>{
+                                headers.map(value => <TableCell style={styles.tableCellColorAndFontSize}>{value}</TableCell>)
+                            }
                         </TableRow>
                     </TableHead>
                     <TableBody> {
-                        data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        VideoIndex.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((value, index) => {
                             return (
                                 <TableRow onClick={(event) => {
@@ -166,7 +101,7 @@ export default class VideoLibrary extends Component {
                                     <TableCell>{value.recorder}</TableCell>
                                     <TableCell>{value.invited}</TableCell>
                                     <TableCell>
-                                        <Button style={{background: 'green', color: 'white'}} onClick={() => {
+                                        <Button style={styles.buttonActions} onClick={() => {
                                             window.alert('downLoadAction performed');
                                         }}>{value.actions}</Button>
                                     </TableCell>
@@ -184,7 +119,7 @@ export default class VideoLibrary extends Component {
                         'aria-label': 'Next Page',
                     }}                    
                     component="div"
-                    count={data.length}
+                    count={VideoIndex.length}
                     page={page}
                     rowsPerPage={rowsPerPage}
                     onChangePage={this.pageChanged}
@@ -194,5 +129,40 @@ export default class VideoLibrary extends Component {
               </Paper>
           </div>
         )
+    }
+}
+
+const styles = {
+    mainView: {
+        padding: 0, 
+        backgroundColor: '#F8F9FA'
+    },
+    testiMonial: {
+        fontSize: 25, 
+        textAlign: 'left'
+    },
+    font40: {
+        fontSize: 40
+    },
+    videos: {
+        color: '#7F7F7F', 
+        marginBottom: '0px', 
+        textAlign: 'center',
+        fontSize: 15
+    },
+    tableCellColorAndFontSize: {
+        color: 'white', 
+        fontSize: 15
+    },
+    tableCellPaddingZero: {
+        padding: 0
+    },
+    paper: {
+        display: 'flex',
+         marginTop: 20,
+          overflow: 'auto'
+    },
+    buttonActions: {
+        background: '#3f51b5', color: 'white'
     }
 }

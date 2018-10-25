@@ -12,6 +12,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import Paper from '@material-ui/core/Paper';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import './email.css';
+import {EmailInvitesData} from '../../Utility/Data';
 
 export default class EmailInvites extends Component {
 
@@ -21,75 +22,35 @@ export default class EmailInvites extends Component {
             searchText: "",
             page: 0,
             rowsPerPage: 5,
-            data: [
-                {
-                    "storyname": "Campaign 1",
-                    "date": "Jan 1, 2018",
-                    "invites": "1",
-                    "responsed": "0"
-                },
-                {
-                    "storyname": "Campaign 2",
-                    "date": "Feb 2, 2018",
-                    "invites": "2",
-                    "responsed": "1"
-                 }, 
-                 {
-                    "storyname": "Campaign 3",
-                    "date": "Mar 3. 2018",
-                    "invites": "3",
-                    "responsed": "2"
-                 }, 
-                 {
-                    "storyname": "Campaign 4",
-                    "date": "Apr 4, 2018",
-                    "invites": "4",
-                    "responsed": "3"
-                 }, 
-                 {
-                    "storyname": "Campaign 5",
-                    "date": "May 5, 2018",
-                    "invites": "5",
-                    "responsed": "5"
-                 },
-                 {
-                    "storyname": "Campaign 6",
-                    "date": "June 6, 2019",
-                    "invites": "6",
-                    "responsed": "6"
-                 }
-            ]
+            header: ["Campaign Name", "Date", "Total Invites", "Total Responses"]
         }
     }
     onChangeText = (event) => {
         this.setState({searchText: event.target.value})
     }
     render() {
-        const {data, page, rowsPerPage, searchText} = this.state;
+        const {page, rowsPerPage, searchText, header} = this.state;
         return (
-            <div class="container-fluid paddingZero" style={{backgroundColor: '#F8F9FA'}}>
-                <div style={{width: '100%'}}>
+            <div class="container-fluid paddingZero" style={styles.mainView}>
                    <AppBar className="app-main-header" position="static">
                        <Toolbar>
-                            <h4 className="mb-0 mr-auto" style={{fontSize: 20}}>Email Invites</h4>
+                            <h4 className="mb-0 mr-auto" style={styles.font20}>Email Invites</h4>
                             <SearchBox onChange={this.onChangeText} value={searchText} styleName="d-none d-sm-block"/>
                       </Toolbar>
                    </AppBar>
-                </div>
                 <div className="row mt-4 mx-2">
-                   <Paper className="mx-4" style={{width: '100%', display: 'flex', padding: 0, overflow: 'auto'}}>
-                      <Table style={{width: '100%'}}>
+                   <Paper className="mx-4" style={styles.paper}>
+                      <Table style={styles.width100}>
                           <TableHead>
-                              <TableRow style={{backgroundColor: 'gray'}}>
-                                  <TableCell style={{color: 'white', fontSize: 15}}>Campaign Name</TableCell>
-                                  <TableCell style={{color: 'white', fontSize: 15}}>Date</TableCell>
-                                  <TableCell style={{color: 'white', fontSize: 15}}>Total Invites</TableCell>
-                                  <TableCell style={{color: 'white', fontSize: 15}}>Total Responses</TableCell>
+                              <TableRow style={styles.tableRowHead}>
+                                  {
+                                      header.map(value => <TableCell style={styles.tableCellHead}>{value}</TableCell>)
+                                  }
                                   <TableCell/>
                               </TableRow>
                           </TableHead>
                           <TableBody> {
-                              data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                              EmailInvitesData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                               .map((value, index) => {
                                   return (
                                       <TableRow style={{backgroundColor: index % 2 == 0 ? '#FAFAFA' : 'white'}}>
@@ -98,7 +59,7 @@ export default class EmailInvites extends Component {
                                           <TableCell>{value.invites}</TableCell>
                                           <TableCell>{value.responsed}</TableCell>
                                           <TableCell>
-                                              <Button style={{backgroundColor: 'green', color: 'white', fontSize: 10}} onClick={() => {}}>Invite</Button>
+                                              <Button style={styles.inviteButton} onClick={() => {}}>Invite</Button>
                                           </TableCell>
                                       </TableRow>
                                   )
@@ -107,7 +68,7 @@ export default class EmailInvites extends Component {
                           </TableBody>
                           <TablePagination
                           style={{display: 'flex'}}
-                          count={data.length}
+                          count={EmailInvitesData.length}
                           backIconButtonProps={{'aria-label': 'Previous Page'}}
                           nextIconButtonProps={{'aria-label': 'Next Page'}}   
                           component="div"                 
@@ -121,5 +82,33 @@ export default class EmailInvites extends Component {
                 </div>
             </div>
         )
+    }
+}
+const styles = {
+    mainView: {
+        backgroundColor: '#F8F9FA'
+    },
+    font20: {
+        fontSize: 20
+    },
+    paper: {
+        width: '100%', 
+        display: 'flex', 
+        padding: 0, 
+        overflow: 'auto'
+    },
+    width100: {
+        width: '100%'
+    },
+    tableRowHead: {
+        backgroundColor: 'gray'
+    },
+    tableCellHead: {
+        color: 'white', 
+        fontSize: 15
+    },
+    inviteButton: {
+        backgroundColor: '#3f51b5',
+         color: 'white', fontSize: 10
     }
 }

@@ -8,6 +8,7 @@
     "@opuscapita/react-searchbar": "^1.0.6",
     "autoprefixer": "^8.6.5",
     "autosuggest-highlight": "^3.1.1",
+    "axios": "^0.18.0",
     "bootstrap": "^4.1.2",
     "bootstrap-v4-rtl": "^4.1.1-0",
     "cross-env": "^5.2.0",

@@ -21,6 +21,8 @@ class UserInfo extends React.Component {
     };
 
     render() {
+        const userId = localStorage.getItem('user_id');
+
         return (
             <div className="user-profile d-flex flex-row align-items-center">
                 <Avatar
@@ -29,7 +31,7 @@ class UserInfo extends React.Component {
                     className="user-avatar "
                 />
                 <div className="user-detail">
-                    <h4 className="user-name" onClick={this.handleClick}>Robert Johnson <i
+                    <h4 className="user-name" onClick={this.handleClick}>{"User" + userId}<i
                         className="zmdi zmdi-caret-down zmdi-hc-fw align-middle"/>
                     </h4>
                 </div>
@@ -44,15 +46,10 @@ class UserInfo extends React.Component {
                               paddingTop: 0,
                               paddingBottom: 0
                           }
-                      }}
-                >
+                      }}>
                     <MenuItem onClick={this.handleRequestClose}>
                         <i className="zmdi zmdi-account zmdi-hc-fw mr-2"/>
                         <IntlMessages id="popup.profile"/>
-                    </MenuItem>
-                    <MenuItem onClick={this.handleRequestClose}>
-                        <i className="zmdi zmdi-settings zmdi-hc-fw mr-2"/>
-                        <IntlMessages id="popup.setting"/>
                     </MenuItem>
                     <MenuItem onClick={() => {
                         this.handleRequestClose();

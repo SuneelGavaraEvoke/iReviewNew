@@ -2,7 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import TextField from "@material-ui/core/TextField";
-import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import IntlMessages from "util/IntlMessages";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -15,25 +14,45 @@ import {
     userSignIn,
     userTwitterSignIn
 } from "actions/Auth";
+import {ON_SHOW_LOADER, SIGNIN_USER_SUCCESS, SIGNIN_ERROR, HIDE_MESSAGE} from '../constants/ActionTypes';
+import {validateState, validateEmail} from '../util/Validations';
+import {SignUp} from '../constants/ApiEndPoints';
+import axios from 'axios';
+import {Alert} from 'reactstrap';
 
 class SignIn extends React.Component {
     constructor() {
         super();
         this.state = {
-            email: 'demo@example.com',
-            password: 'demo#123'
+            email: '',
+            password: ''
         }
     }
 
     componentDidUpdate() {
         if (this.props.showMessage) {
             setTimeout(() => {
-                this.props.hideMessage();
-            }, 100);
+                window.alert(this.props.alertMessage)
+                this.props.hideMessage()    
+            }, 100)
         }
         if (this.props.authUser !== null) {
             this.props.history.push('/');
         }
+    }
+    getValidationObject = () => {
+        const {email, password} = this.state;
+        return {
+            "Email": validateEmail(email),
+            "Password": password.length > 0
+        }
+    }
+    validateAndCallService = () => {
+
+        const validatedObj = this.getValidationObject();
+        const error = validateState(validatedObj);
+        const {email, password} = this.state;
+        error == "" ? this.props.userSignIn(email, password) : window.alert(error);
     }
 
     render() {
@@ -43,8 +62,7 @@ class SignIn extends React.Component {
         } = this.state;
         const {showMessage, loader, alertMessage} = this.props;
         return (
-            <div
-                className="app-login-container d-flex justify-content-center align-items-center animated slideInUpTiny animation-duration-3">
+            <div className="app-login-container d-flex justify-content-center align-items-center animated slideInUpTiny animation-duration-3">
                 <div className="app-login-main-content">
                     <div className="app-logo-content d-flex align-items-center justify-content-center" style={{backgroundColor: 'primary'}}>
                         <Link className="logo-lg" to="/" title="Jambo">
@@ -80,8 +98,7 @@ class SignIn extends React.Component {
 
                                     <div className="mb-3 d-flex align-items-center justify-content-between">
                                         <Button onClick={() => {
-                                            this.props.showAuthLoader();
-                                            this.props.userSignIn({email, password});
+                                            this.validateAndCallService()
                                         }} variant="raised" color='primary'>
                                             <IntlMessages id="appModule.signIn"/>
                                         </Button>
@@ -90,53 +107,6 @@ class SignIn extends React.Component {
                                             <IntlMessages id="signIn.signUp"/>
                                         </Link>
                                     </div>
-
-                                    {/* <div className="app-social-block my-1 my-sm-3">
-                                        <IntlMessages
-                                            id="signIn.connectWith"/>
-                                        <ul className="social-link">
-                                            <li>
-                                                <IconButton className="icon"
-                                                            onClick={() => {
-                                                                this.props.showAuthLoader();
-                                                                this.props.userFacebookSignIn();
-                                                            }}>
-                                                    <i className="zmdi zmdi-facebook"/>
-                                                </IconButton>
-                                            </li>
-
-                                            <li>
-                                                <IconButton className="icon"
-                                                            onClick={() => {
-                                                                this.props.showAuthLoader();
-                                                                this.props.userTwitterSignIn();
-                                                            }}>
-                                                    <i className="zmdi zmdi-twitter"/>
-                                                </IconButton>
-                                            </li>
-
-                                            <li>
-                                                <IconButton className="icon"
-                                                            onClick={() => {
-                                                                this.props.showAuthLoader();
-                                                                this.props.userGoogleSignIn();
-
-                                                            }}>
-                                                    <i className="zmdi zmdi-google-plus"/>
-                                                </IconButton>
-                                            </li>
-
-                                            <li>
-                                                <IconButton className="icon"
-                                                            onClick={() => {
-                                                                this.props.showAuthLoader();
-                                                                this.props.userGithubSignIn();
-                                                            }}>
-                                                    <i className="zmdi zmdi-github"/>
-                                                </IconButton>
-                                            </li>
-                                        </ul>
-                                                        </div>*/}
 
                                 </fieldset>
                             </form>
@@ -150,8 +120,6 @@ class SignIn extends React.Component {
                         <CircularProgress/>
                     </div>
                 }
-                {showMessage && console.log(alertMessage)}
-                {/*<NotificationContainer/>*/}
             </div>
         );
     }
@@ -161,13 +129,38 @@ const mapStateToProps = ({auth}) => {
     const {loader, alertMessage, showMessage, authUser} = auth;
     return {loader, alertMessage, showMessage, authUser}
 };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        userSignIn: (email, password) => {
+            dispatch({type: ON_SHOW_LOADER})
+            axios.post(SignUp, {
+                'userName': email,
+                'password': password
+            })
+            .then((response) => {
+                const {id} = response.data;
+                debugger;
+                localStorage.setItem('user_id', id);
+                dispatch({type: SIGNIN_USER_SUCCESS, payload: id})
+            })
+            .catch((error) => {
+                console.log(error)
+                dispatch({type: SIGNIN_ERROR})
+            }) 
+        } ,
 
-export default connect(mapStateToProps, {
-    userSignIn,
+        hideMessage: () => {
+            dispatch({type: HIDE_MESSAGE})
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+/*    userSignIn,
     hideMessage,
     showAuthLoader,
     userFacebookSignIn,
     userGoogleSignIn,
     userGithubSignIn,
     userTwitterSignIn
-})(SignIn);
+*/

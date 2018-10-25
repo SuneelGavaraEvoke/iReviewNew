@@ -10,7 +10,8 @@ import {
     SIGNIN_TWITTER_USER_SUCCESS,
     SIGNIN_USER_SUCCESS,
     SIGNOUT_USER_SUCCESS,
-    SIGNUP_USER_SUCCESS
+    SIGNUP_USER_SUCCESS,
+    SIGNIN_ERROR
 } from "constants/ActionTypes";
 
 const INIT_STATE = {
@@ -25,10 +26,26 @@ const INIT_STATE = {
 export default (state = INIT_STATE, action) => {
     switch (action.type) {
         case SIGNUP_USER_SUCCESS: {
+            debugger;
             return {
                 ...state,
                 loader: false,
                 authUser: action.payload
+            }
+        }
+        case SIGNIN_ERROR: {
+            return {
+                ...state,
+                loader: false,
+                alertMessage: 'Invalid Credentials',
+                showMessage: true
+            }
+        }
+        case HIDE_MESSAGE: {
+            return {
+                ...state,
+                loader: false,
+                showMessage: false,
             }
         }
         case SIGNIN_USER_SUCCESS: {

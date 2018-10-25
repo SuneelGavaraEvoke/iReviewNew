@@ -41,7 +41,7 @@ export default class VideoListings extends Component {
     render() {
         const {page, rowsPerPage,headers, searchText} = this.state;
         return (
-            <div class="container-fluid" style={{paddingLeft: 0, paddingRight: 0}}>
+            <div class="container-fluid p-0">
             <div style={styles.totalWidth}>
              <AppBar className="app-main-header" position="static">
               <Toolbar>
